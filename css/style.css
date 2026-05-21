@@ -1,0 +1,9 @@
+/* Main stylesheet entrypoint. Keep imports in this order: it preserves the verified cascade. */
+@import url("./01-foundation.css");
+@import url("./02-risk-clients.css");
+@import url("./03-coupons.css");
+@import url("./04-recommendations.css");
+@import url("./05-shared-components.css");
+@import url("./06-dashboard.css");
+@import url("./07-settings.css");
+@import url("./08-responsive.css");

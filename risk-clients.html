@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Клиенты в зоне риска | Реактивация клиентов для Bitrix24</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css?v=20260522-service">
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="vendor/apexcharts.min.js?v=20260519-1"></script>
+  <script defer src="js/data.js?v=20260521-actions"></script>
+  <script defer src="js/data-service.js?v=20260522-service"></script>
+  <script defer src="js/core.js?v=20260522-service"></script>
+  <script defer src="js/risk-clients.js?v=20260522-service"></script>
+  <script defer src="js/app.js?v=20260521-actions"></script>
+</head>
+<body data-page="risk">
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="index.html" aria-label="На дашборд">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <strong>Реактивация клиентов</strong>
+          <span>для Bitrix24</span>
+        </span>
+      </a>
+
+      <nav class="sidebar__nav" aria-label="Основная навигация">
+        <a class="sidebar__link" href="index.html" data-page="dashboard"><span class="nav-icon nav-icon--dashboard" aria-hidden="true"></span>Дашборд</a>
+        <a class="sidebar__link" href="recommendations.html" data-page="recommendations"><span class="nav-icon nav-icon--recommendations" aria-hidden="true"></span>Рекомендации</a>
+        <a class="sidebar__link" href="coupons.html" data-page="coupons"><span class="nav-icon nav-icon--coupons" aria-hidden="true"></span>Купоны</a>
+        <a class="sidebar__link" href="risk-clients.html" data-page="risk"><span class="nav-icon nav-icon--risk" aria-hidden="true"></span>Клиенты в зоне риска</a>
+        <a class="sidebar__link" href="settings.html" data-page="settings"><span class="nav-icon nav-icon--settings" aria-hidden="true"></span>Настройки</a>
+      </nav>
+
+      <div class="sidebar__help">
+        <span class="sidebar__help-icon">?</span>
+        <span>
+          <strong>Нужна помощь?</strong>
+          <a href="#">Открыть инструкцию</a>
+        </span>
+      </div>
+    </aside>
+
+    <div class="app__content">
+      <header class="topbar">
+        <button class="topbar__burger" type="button" aria-label="Открыть меню"></button>
+        <div class="topbar__spacer"></div>
+        <button class="topbar__date" type="button">01.05.2024 – 31.05.2024</button>
+        <button class="icon-button" type="button" aria-label="Обновить"></button>
+        <span class="topbar__updated js-updated-at">Обновлено: 5 мин. назад</span>
+        <button class="icon-button icon-button--menu" type="button" aria-label="Дополнительные действия"></button>
+      </header>
+
+      <main class="page risk-clients-page">
+        <section class="risk-clients-header" aria-labelledby="risk-clients-title">
+          <span class="risk-clients-header__icon" aria-hidden="true"></span>
+          <div>
+            <h1 id="risk-clients-title">Клиенты в зоне риска</h1>
+            <p>Клиенты, которые могут перестать покупать в ближайшее время</p>
+          </div>
+        </section>
+
+        <section class="risk-clients-layout" aria-label="Структура страницы клиентов в зоне риска">
+          <div class="risk-clients-layout__main">
+            <section class="risk-clients-kpis" aria-label="Карточки риска">
+              <article class="card risk-clients-kpi-card risk-clients-kpi-card--total" aria-label="Всего в зоне риска">
+                <span class="risk-clients-kpi-card__icon" aria-hidden="true"></span>
+                <div class="risk-clients-kpi-card__body">
+                  <p class="risk-clients-kpi-card__label">Всего в зоне риска</p>
+                  <p class="risk-clients-kpi-card__value">57</p>
+                  <p class="risk-clients-kpi-card__delta risk-clients-kpi-card__delta--muted">−3% к прошлому месяцу</p>
+                </div>
+              </article>
+              <article class="card risk-clients-kpi-card risk-clients-kpi-card--critical" aria-label="Критический риск">
+                <span class="risk-clients-kpi-card__icon" aria-hidden="true"></span>
+                <div class="risk-clients-kpi-card__body">
+                  <p class="risk-clients-kpi-card__label">Критический риск</p>
+                  <p class="risk-clients-kpi-card__value">14</p>
+                  <p class="risk-clients-kpi-card__delta risk-clients-kpi-card__delta--muted">−1% к прошлому месяцу</p>
+                </div>
+              </article>
+              <article class="card risk-clients-kpi-card risk-clients-kpi-card--medium" aria-label="Средний риск">
+                <span class="risk-clients-kpi-card__icon" aria-hidden="true"></span>
+                <div class="risk-clients-kpi-card__body">
+                  <p class="risk-clients-kpi-card__label">Средний риск</p>
+                  <p class="risk-clients-kpi-card__value">31</p>
+                  <p class="risk-clients-kpi-card__delta">+5% к прошлому месяцу</p>
+                </div>
+              </article>
+              <article class="card risk-clients-kpi-card risk-clients-kpi-card--loss" aria-label="Потенциальные потери">
+                <span class="risk-clients-kpi-card__icon" aria-hidden="true"></span>
+                <div class="risk-clients-kpi-card__body">
+                  <p class="risk-clients-kpi-card__label">Потенциальные потери</p>
+                  <p class="risk-clients-kpi-card__value">€18,420</p>
+                  <p class="risk-clients-kpi-card__delta">+12% к прошлому месяцу</p>
+                </div>
+              </article>
+            </section>
+
+            <article class="card risk-clients-table-card" aria-label="Основная таблица клиентов в зоне риска">
+              <div class="risk-main-toolbar">
+                <label class="risk-main-search">
+                  <span class="visually-hidden">Поиск клиента</span>
+                  <input class="js-risk-search" type="search" placeholder="Поиск клиента...">
+                </label>
+                <div class="dropdown risk-main-dropdown risk-level-filter">
+                  <button class="risk-main-control dropdown__toggle" type="button" aria-haspopup="true" aria-expanded="false"><span class="dropdown__label">Уровень риска: Все</span></button>
+                  <div class="dropdown__menu"></div>
+                </div>
+                <div class="dropdown risk-main-dropdown risk-manager-filter">
+                  <button class="risk-main-control dropdown__toggle" type="button" aria-haspopup="true" aria-expanded="false"><span class="dropdown__label">Менеджер: Все</span></button>
+                  <div class="dropdown__menu"></div>
+                </div>
+                <div class="dropdown risk-main-dropdown risk-period-filter">
+                  <button class="risk-main-control dropdown__toggle" type="button" aria-haspopup="true" aria-expanded="false"><span class="dropdown__label">Период: 30 дней</span></button>
+                  <div class="dropdown__menu"></div>
+                </div>
+                <div class="dropdown risk-main-dropdown risk-segment-filter">
+                  <button class="risk-main-control dropdown__toggle" type="button" aria-haspopup="true" aria-expanded="false"><span class="dropdown__label">Сегмент: Все</span></button>
+                  <div class="dropdown__menu"></div>
+                </div>
+                <button class="risk-main-filter js-risk-filter" type="button" aria-haspopup="true" aria-expanded="false"><span aria-hidden="true"></span>Фильтры</button>
+                <div class="risk-main-filter-panel js-risk-filter-panel" role="dialog" aria-label="Панель фильтров риска">
+                  <strong>Фильтры</strong>
+                  <span>Найдено: <b class="js-risk-filter-total">57</b></span>
+                  <p class="js-risk-filter-summary">Фильтры не выбраны</p>
+                  <div>
+                    <button class="button button--secondary js-risk-filter-apply" type="button">Применить</button>
+                    <button class="button button--ghost js-risk-filter-reset" type="button">Сбросить</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="risk-main-table" role="table" aria-label="Клиенты в зоне риска">
+                <div class="risk-main-table__head" role="row">
+                  <span role="columnheader">Клиент</span>
+                  <span role="columnheader">Уровень риска</span>
+                  <span role="columnheader">Задержка</span>
+                  <span role="columnheader">Ожидаемый цикл</span>
+                  <span role="columnheader">Факт (дней)</span>
+                  <span role="columnheader">Потенциал потерь</span>
+                  <span role="columnheader">Рекомендуемое действие</span>
+                  <span role="columnheader">Действия</span>
+                </div>
+
+              </div>
+
+              <div class="risk-main-footer">
+                <div class="risk-main-page-size">
+                  <span>Показать по:</span>
+                  <div class="dropdown dropdown--risk-page-size">
+                    <button class="dropdown__toggle" type="button" aria-haspopup="true" aria-expanded="false"><span class="dropdown__label">20</span></button>
+                    <div class="dropdown__menu"></div>
+                  </div>
+                </div>
+                <span class="risk-main-count js-risk-count">1–20 из 57</span>
+                <div class="risk-main-pagination js-risk-pagination" aria-label="Пагинация">
+                  <button class="is-active" type="button">1</button>
+                  <button type="button">2</button>
+                  <button type="button">3</button>
+                  <button class="risk-main-pagination__next" type="button" aria-label="Следующая страница"></button>
+                </div>
+              </div>
+            </article>
+            <article class="card risk-clients-summary-card" aria-label="Сводка клиентов в зоне риска">
+              <div class="risk-summary-section risk-summary-section--critical">
+                <span class="risk-summary-icon" aria-hidden="true"></span>
+                <div class="risk-summary-text">
+                  <p>Сегодня в зоне критического риска</p>
+                  <div class="risk-summary-values">
+                    <span class="risk-summary-pair"><strong>14</strong><span>клиентов</span></span>
+                    <em></em>
+                    <span class="risk-summary-stack"><strong>€7,400</strong><span>потенциальные потери</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="risk-summary-section risk-summary-section--actions">
+                <div class="risk-summary-text">
+                  <p>Рекомендуемые действия</p>
+                  <div class="risk-summary-action-row">
+                    <strong>8</strong>
+                    <span>задач можно создать<br>в один клик</span>
+                    <button type="button"><span>Создать задачи</span></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="risk-summary-section risk-summary-section--efficiency">
+                <span class="risk-summary-icon" aria-hidden="true"></span>
+                <div class="risk-summary-text">
+                  <p>Эффективность реактивации</p>
+                  <div class="risk-summary-efficiency-row">
+                    <strong>68%</strong>
+                    <span>успешных реактиваций<br>в этом месяце</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="risk-clients-layout__side" aria-label="Правая колонка клиентов в зоне риска">
+            <article class="card risk-clients-side-card risk-clients-side-card--info" aria-label="Как считается риск">
+              <div class="risk-info-card__header">
+                <h2>Как считается риск?</h2>
+                <span aria-label="Информация">i</span>
+              </div>
+              <p class="risk-info-card__lead">Риск рассчитывается автоматически на основе:</p>
+              <ul class="risk-info-card__list">
+                <li>Сравнения текущего интервала покупок</li>
+                <li>с историческим циклом клиента</li>
+                <li>чем реже клиент покупает — тем выше риск</li>
+              </ul>
+              <div class="risk-info-card__legend">
+                <div class="risk-info-card__legend-row risk-info-card__legend-row--critical">
+                  <span></span>
+                  <strong>Критический риск</strong>
+                  <em>35% и выше</em>
+                </div>
+                <div class="risk-info-card__legend-row risk-info-card__legend-row--medium">
+                  <span></span>
+                  <strong>Средний риск</strong>
+                  <em>20% – 35%</em>
+                </div>
+                <div class="risk-info-card__legend-row risk-info-card__legend-row--low">
+                  <span></span>
+                  <strong>Низкий риск</strong>
+                  <em>ниже 20%</em>
+                </div>
+              </div>
+            </article>
+              <article class="card risk-clients-side-card risk-clients-side-card--time" aria-label="Риск по времени">
+                <div class="risk-mini-card__header">
+                  <h2>Риск по времени</h2>
+                  <div class="dropdown risk-time-period-dropdown">
+                    <button class="dropdown__toggle" type="button" aria-haspopup="true" aria-expanded="false">
+                      <span class="dropdown__label">60 дней</span>
+                    </button>
+                    <div class="dropdown__menu"></div>
+                  </div>
+                </div>
+              <div class="risk-time-chart" aria-label="График риска по времени">
+                <span class="risk-time-chart__label risk-time-chart__label--100">100%</span>
+                <span class="risk-time-chart__label risk-time-chart__label--75">75%</span>
+                <span class="risk-time-chart__label risk-time-chart__label--50">50%</span>
+                <span class="risk-time-chart__label risk-time-chart__label--25">25%</span>
+                <span class="risk-time-chart__label risk-time-chart__label--0">0%</span>
+                <div id="risk-time-chart" class="risk-time-chart__plot" aria-hidden="true"></div>
+                <strong class="risk-time-chart__badge">57%</strong>
+                <span class="risk-time-chart__date risk-time-chart__date--1">1 мая</span>
+                <span class="risk-time-chart__date risk-time-chart__date--11">11 мая</span>
+                <span class="risk-time-chart__date risk-time-chart__date--21">21 мая</span>
+                <span class="risk-time-chart__date risk-time-chart__date--31">31 мая</span>
+              </div>
+            </article>
+            <article class="card risk-clients-side-card risk-clients-side-card--loss" aria-label="Потенциальные потери">
+              <h2 class="risk-loss-card__title">Потенциальные потери</h2>
+              <div class="risk-loss-card__total">
+                <strong>€18,420</strong>
+                <span>+12% к прошлому месяцу</span>
+              </div>
+              <div class="risk-loss-chart" aria-label="График потенциальных потерь">
+                <span class="risk-loss-chart__label risk-loss-chart__label--20">€20k</span>
+                <span class="risk-loss-chart__label risk-loss-chart__label--10">€10k</span>
+                <span class="risk-loss-chart__label risk-loss-chart__label--0">€0</span>
+                <div id="risk-loss-chart" class="risk-loss-chart__plot" aria-hidden="true"></div>
+                <span class="risk-loss-chart__date risk-loss-chart__date--1">1 мая</span>
+                <span class="risk-loss-chart__date risk-loss-chart__date--11">11 мая</span>
+                <span class="risk-loss-chart__date risk-loss-chart__date--21">21 мая</span>
+                <span class="risk-loss-chart__date risk-loss-chart__date--31">31 мая</span>
+              </div>
+            </article>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

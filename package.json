@@ -1,0 +1,9 @@
+{
+  "name": "reactivating-clients-for-bitrix24",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx vite --host 127.0.0.1",
+    "preview": "npx vite preview --host 127.0.0.1"
+  }
+}

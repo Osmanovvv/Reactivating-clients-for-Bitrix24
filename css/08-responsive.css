@@ -1,0 +1,2837 @@
+/* Responsive rules. Extracted from style.css without changing cascade order. */
+@media (max-width: 767.98px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(82vw, var(--sidebar-width));
+    display: flex;
+    transform: translateX(-105%);
+    transition: transform 0.2s ease;
+    box-shadow: 18px 0 36px rgba(15, 23, 42, 0.16);
+  }
+
+  body.is-sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  body.is-sidebar-open .app::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-sidebar) - 1);
+    background: rgba(15, 23, 42, 0.28);
+  }
+
+  .topbar {
+    padding-inline: 14px;
+    z-index: calc(var(--z-sidebar) + 2);
+  }
+
+  .topbar__burger {
+    display: inline-grid;
+    position: relative;
+    z-index: calc(var(--z-sidebar) + 3);
+  }
+
+  .topbar__date,
+  .topbar__updated {
+    display: none;
+  }
+
+  .topbar-period {
+    display: none;
+  }
+
+  .page {
+    padding: 14px;
+  }
+
+  .page__header,
+  .table-footer,
+  .table-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .kpi-grid,
+  .content-grid--2,
+  .content-grid--sidebar,
+  .form-grid--2,
+  .radio-card-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Stage 10 responsive layer.
+   The 1158px reference viewport intentionally remains untouched. */
+@media (min-width: 768px) and (max-width: 1140px) {
+  :root {
+    --sidebar-width: 70px;
+    --content-padding: 12px;
+  }
+
+  .brand {
+    justify-content: center;
+    padding-inline: 0;
+  }
+
+  .brand__text,
+  .sidebar__help > span:not(.sidebar__help-icon) {
+    display: none;
+  }
+
+  .sidebar__nav {
+    padding-inline: 8px;
+  }
+
+  .sidebar__link {
+    justify-content: center;
+    gap: 0;
+    padding-inline: 0;
+    font-size: 0;
+  }
+
+  .sidebar__link .nav-icon {
+    margin: 0;
+  }
+
+  .sidebar__help {
+    justify-content: center;
+    margin-inline: 10px;
+    padding: 10px 0;
+  }
+
+  .topbar {
+    padding-inline: 12px;
+  }
+
+  .topbar__date {
+    min-width: 170px;
+  }
+
+  .page,
+  .coupons-page {
+    padding: 12px;
+  }
+
+  .risk-clients-page {
+    height: auto;
+    min-height: calc(100vh - var(--topbar-height));
+    overflow: visible;
+    padding: 12px;
+  }
+
+  .kpi-grid,
+  .recommendations-kpis,
+  .coupons-kpis,
+  .risk-clients-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid,
+  .dashboard-grid--top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid--top .dashboard-card--revenue,
+  .dashboard-grid--top .dashboard-card--donut,
+  .dashboard-grid--top .dashboard-card--funnel,
+  .dashboard-grid--bottom .dashboard-card--discounts,
+  .dashboard-grid--bottom .dashboard-card--risk {
+    grid-column: 1 / -1;
+  }
+
+  .recommendations-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .recommendations-toolbar .recommendations-search.search {
+    flex: 1 1 260px;
+    width: auto;
+  }
+
+  .coupons-layout,
+  .risk-clients-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .coupons-layout__side,
+  .risk-clients-layout__side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .coupons-table-toolbar,
+  .risk-main-toolbar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coupons-search,
+  .risk-main-search {
+    grid-column: 1 / -1;
+  }
+
+  .coupons-table-wrap,
+  .recommendations-table-wrap {
+    overflow-x: auto;
+  }
+
+  .coupons-table {
+    min-width: 760px;
+  }
+
+  .risk-main-table {
+    overflow-x: auto;
+    grid-template-rows: 40px repeat(7, 39px);
+  }
+
+  .risk-main-table__head,
+  .risk-main-row {
+    min-width: 720px;
+  }
+
+  .risk-clients-summary-card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    height: auto;
+    min-height: 92px;
+    gap: 12px;
+    padding-block: 12px;
+  }
+
+  .risk-summary-section--efficiency {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    border-top: 1px solid var(--color-border);
+    padding-top: 10px;
+  }
+
+  .settings-shell {
+    width: min(760px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .topbar__updated {
+    display: none;
+  }
+
+  .topbar__date {
+    min-width: 160px;
+  }
+
+  .coupons-layout__side,
+  .risk-clients-layout__side {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="coupons"] .coupons-table-card {
+    height: 500px;
+    min-height: 500px;
+  }
+
+  body[data-page="coupons"] .coupons-table-toolbar {
+    min-height: 148px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+  }
+
+  body[data-page="coupons"] .coupons-search {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="coupons"] .coupons-period-filter {
+    grid-column: 1 / span 2;
+  }
+
+  body[data-page="coupons"] .coupons-filter-button {
+    grid-column: 3;
+    width: 100%;
+  }
+
+  body[data-page="risk"] .risk-main-toolbar {
+    min-height: 124px;
+  }
+
+  .settings-connection {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .settings-connection button {
+    margin-left: 37px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  body[data-page="dashboard"] .dashboard-grid--top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--revenue {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--donut,
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--funnel {
+    grid-column: span 1;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut.card--pad,
+  body[data-page="dashboard"] .dashboard-card--funnel.card--pad {
+    padding: 16px 14px 14px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut,
+  body[data-page="dashboard"] .dashboard-card--funnel {
+    min-height: 244px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .donut-layout {
+    height: 184px;
+    gap: 14px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel-layout {
+    height: 184px;
+    grid-template-columns: minmax(140px, 1fr) 64px;
+    gap: 8px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel {
+    margin-top: 0;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel-stats {
+    gap: 17px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1140px) {
+  body[data-page="dashboard"] .dashboard-kpis {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  body[data-page="dashboard"] .dashboard-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top {
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr))
+      repeat(3, minmax(0, 1.06fr))
+      repeat(4, minmax(0, 0.955fr));
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--revenue,
+  body[data-page="dashboard"] .dashboard-grid--bottom .dashboard-card--discounts {
+    grid-column: span 5;
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--donut {
+    grid-column: span 3;
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--funnel {
+    grid-column: span 4;
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--bottom .dashboard-card--risk {
+    grid-column: span 7;
+  }
+
+  body[data-page="recommendations"] .recommendations-kpis {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  body[data-page="recommendations"] .recommendations-toolbar {
+    flex-wrap: nowrap;
+  }
+
+  body[data-page="recommendations"] .recommendations-toolbar .recommendations-search.search {
+    flex: 0 0 294px;
+    width: 294px;
+  }
+
+  body[data-page="coupons"] .coupons-layout {
+    grid-template-columns: minmax(0, 1fr) 212px;
+  }
+
+  body[data-page="coupons"] .coupons-layout__side {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="coupons"] .coupons-kpis {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  body[data-page="coupons"] .coupons-table-toolbar {
+    min-height: 58px;
+    grid-template-columns: 138px 94px 94px 104px 146px 76px;
+  }
+
+  body[data-page="coupons"] .coupons-search,
+  body[data-page="coupons"] .coupons-period-filter {
+    grid-column: auto;
+  }
+
+  body[data-page="coupons"] .coupons-table {
+    min-width: 715px;
+  }
+
+  body[data-page="risk"] .risk-clients-layout {
+    grid-template-columns: minmax(0, 1fr) 216px;
+  }
+
+  body[data-page="risk"] .risk-clients-layout__side {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="risk"] .risk-clients-kpis {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  body[data-page="risk"] .risk-clients-kpi-card {
+    gap: 5px;
+    padding-right: 6px;
+  }
+
+  body[data-page="risk"] .risk-main-toolbar {
+    min-height: 58px;
+    grid-template-columns: 204px 96px 96px 92px 88px 76px;
+  }
+
+  body[data-page="risk"] .risk-main-search {
+    grid-column: auto;
+  }
+
+  body[data-page="risk"] .risk-main-table {
+    overflow-x: auto;
+  }
+
+  body[data-page="risk"] .risk-main-table__head,
+  body[data-page="risk"] .risk-main-row {
+    min-width: 714px;
+  }
+
+  body[data-page="risk"] .risk-clients-summary-card {
+    height: 74px;
+    min-height: 74px;
+    grid-template-columns: 236px 250px minmax(0, 1fr);
+    gap: 0;
+    padding: 0 14px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--efficiency {
+    grid-column: auto;
+    padding-top: 0;
+    padding-left: 10px;
+    border-top: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --sidebar-width: 208px;
+    --content-padding: 14px 20px 18px;
+  }
+
+  .brand {
+    gap: 12px;
+    padding-right: 14px;
+    padding-left: 18px;
+  }
+
+  .sidebar__nav {
+    gap: 9px;
+    padding: 20px 10px 0;
+  }
+
+  .sidebar__link {
+    min-height: 38px;
+    gap: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .sidebar__help {
+    margin-inline: 10px;
+    margin-bottom: 14px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .topbar {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  body[data-page="dashboard"] .kpi-grid,
+  body[data-page="dashboard"] .dashboard-grid {
+    gap: 10px;
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .app {
+    display: block;
+  }
+
+  .topbar {
+    height: 56px;
+    padding-inline: 10px;
+    gap: 8px;
+  }
+
+  .topbar .icon-button--menu {
+    margin-left: 0;
+  }
+
+  .page,
+  .coupons-page,
+  .risk-clients-page,
+  .settings-page {
+    height: auto;
+    min-height: calc(100vh - 56px);
+    overflow: visible;
+    padding: 12px;
+  }
+
+  .page__header,
+  .coupons-header,
+  .risk-clients-header,
+  .settings-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .coupons-header,
+  .risk-clients-header {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .settings-header {
+    display: flex;
+  }
+
+  .settings-save {
+    width: 100%;
+  }
+
+  .kpi-grid,
+  .recommendations-kpis,
+  .coupons-kpis,
+  .risk-clients-kpis,
+  .content-grid--2,
+  .content-grid--sidebar,
+  .form-grid--2,
+  .radio-card-group {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-card,
+  .recommendations-kpis .kpi-card,
+  .coupons-kpi-card,
+  .risk-clients-kpi-card {
+    min-height: 82px;
+  }
+
+  .dashboard-grid,
+  .dashboard-grid--top,
+  .dashboard-grid--bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid--top .dashboard-card--revenue,
+  .dashboard-grid--top .dashboard-card--donut,
+  .dashboard-grid--top .dashboard-card--funnel,
+  .dashboard-grid--bottom .dashboard-card--discounts,
+  .dashboard-grid--bottom .dashboard-card--risk {
+    grid-column: 1 / -1;
+  }
+
+  .dashboard-card--revenue,
+  .dashboard-card--donut,
+  .dashboard-card--funnel,
+  .dashboard-card--discounts,
+  .dashboard-card--risk {
+    min-height: auto;
+  }
+
+  .dashboard-card--revenue,
+  .dashboard-card--discounts,
+  .dashboard-card--risk {
+    overflow: hidden;
+  }
+
+  .dashboard-total {
+    flex-wrap: wrap;
+  }
+
+  .donut-layout,
+  .funnel-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .funnel-stats {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .discount-table,
+  .risk-table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .chart--line {
+    overflow: hidden;
+  }
+
+  .chart--line .apexcharts-canvas,
+  .chart--line .apexcharts-svg,
+  .revenue-chart {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .discount-table__head,
+  .discount-row,
+  .risk-table__head,
+  .risk-row {
+    min-width: 500px;
+  }
+
+  .recommendations-main__card {
+    min-height: auto;
+  }
+
+  .recommendations-toolbar,
+  .coupons-table-toolbar,
+  .risk-main-toolbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .recommendations-toolbar .recommendations-filter.button,
+  .recommendations-toolbar .dropdown__toggle.button,
+  .recommendations-toolbar .recommendations-manager-filter .dropdown__toggle.button,
+  .recommendations-toolbar .recommendations-search.search,
+  .coupons-search,
+  .coupons-filter-control,
+  .coupons-filter-button,
+  .risk-main-search,
+  .risk-main-control,
+  .risk-main-filter {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .recommendations-filter-panel,
+  .coupons-filter-panel,
+  .risk-main-filter-panel {
+    top: 52px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+
+  .recommendations-table-wrap,
+  .coupons-table-wrap {
+    overflow-x: auto;
+  }
+
+  .recommendations-table {
+    min-width: 920px;
+  }
+
+  .coupons-table {
+    min-width: 760px;
+  }
+
+  .coupons-table-card,
+  .risk-clients-table-card {
+    height: auto;
+    min-height: 420px;
+  }
+
+  .coupons-table-footer,
+  .risk-main-footer,
+  .table-footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    height: auto;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .coupons-count,
+  .risk-main-count {
+    justify-self: start;
+  }
+
+  .coupons-pagination,
+  .risk-main-pagination,
+  .pagination {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .coupons-layout,
+  .risk-clients-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .coupons-layout__side,
+  .risk-clients-layout__side {
+    grid-template-columns: 1fr;
+  }
+
+  .risk-main-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .risk-main-table__head,
+  .risk-main-row {
+    min-width: 760px;
+  }
+
+  .risk-clients-summary-card {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .risk-summary-section--critical,
+  .risk-summary-section--actions,
+  .risk-summary-section--efficiency {
+    grid-template-columns: 22px minmax(0, 1fr);
+    padding: 0;
+    border: 0;
+  }
+
+  .risk-summary-action-row {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+  }
+
+  .settings-shell {
+    width: 100%;
+    margin: 0;
+  }
+
+  .settings-card,
+  .settings-actions {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .settings-connection,
+  .settings-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .settings-connection {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .settings-connection button {
+    grid-column: 1 / -1;
+    margin-left: 0;
+  }
+
+  .settings-radio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-field,
+  .settings-card__body--orders .settings-field,
+  .settings-card__body--spam .settings-field {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+  }
+
+  .settings-stepper,
+  .settings-field input,
+  .settings-card__body--orders .settings-stepper {
+    width: 100%;
+  }
+
+  .settings-discount-type {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .settings-manager-select {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-manager-select__button,
+  .settings-save--footer,
+  .settings-reset {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .toast {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 430px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  .page,
+  .coupons-page,
+  .risk-clients-page,
+  .settings-page {
+    padding: 10px;
+  }
+
+  .card,
+  .settings-card {
+    border-radius: 10px;
+  }
+
+  .funnel-stats {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .sidebar {
+    width: min(86vw, 280px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .dashboard-card--revenue,
+  .dashboard-card--discounts,
+  .dashboard-card--risk {
+    overflow: hidden;
+  }
+
+  .revenue-chart,
+  .chart--line,
+  .chart--line .apexcharts-canvas,
+  .chart--line .apexcharts-svg {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .discount-table,
+  .risk-table {
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .tooltip__content {
+    max-width: min(220px, calc(100vw - 48px));
+    overflow-wrap: anywhere;
+  }
+
+  .settings-stack,
+  .settings-card,
+  .settings-actions {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .settings-connection {
+    column-gap: 8px;
+  }
+
+  .settings-connection__icon {
+    grid-row: 1 / span 3;
+    align-self: start;
+  }
+
+  .settings-connection p,
+  .settings-connection strong,
+  .settings-connection > span:not(.settings-connection__icon) {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .settings-connection > span:not(.settings-connection__icon) {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 425px) {
+  .page,
+  .coupons-page,
+  .risk-clients-page,
+  .settings-page {
+    padding: 10px;
+  }
+
+  .coupons-header h1,
+  .risk-clients-header h1,
+  .settings-header h1,
+  #recommendations-title {
+    font-size: 20px;
+    line-height: 1.12;
+  }
+
+  .coupons-header__icon,
+  .risk-clients-header__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .kpi-card,
+  .recommendations-kpis .kpi-card,
+  .coupons-kpi-card,
+  .risk-clients-kpi-card {
+    min-height: 76px;
+    padding-block: 10px;
+  }
+
+  .dashboard-card--revenue.card--pad,
+  .dashboard-card--donut.card--pad,
+  .dashboard-card--funnel.card--pad,
+  .dashboard-card--discounts.card--pad,
+  .dashboard-card--risk.card--pad {
+    padding: 12px 10px;
+  }
+
+  .dashboard-total {
+    gap: 6px;
+  }
+
+  .dashboard-total span {
+    font-size: 26px;
+  }
+
+  .dashboard-total strong,
+  .dashboard-total em {
+    font-size: 11px;
+  }
+
+  .chart--line {
+    height: 150px;
+  }
+
+  .donut-layout,
+  .funnel-layout {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    justify-items: center;
+  }
+
+  .donut-visual,
+  .donut-chart {
+    width: 112px;
+    height: 112px;
+    flex-basis: 112px;
+  }
+
+  .donut-center strong {
+    font-size: 21px;
+  }
+
+  .donut-center span {
+    font-size: 10px;
+  }
+
+  .legend-list {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: center;
+    gap: 6px;
+  }
+
+  .legend-item {
+    gap: 5px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .legend-item p {
+    font-size: 10px;
+  }
+
+  .legend-item strong {
+    margin-top: 2px;
+  }
+
+  .funnel {
+    height: 128px;
+    margin-top: 4px;
+  }
+
+  .funnel__part {
+    height: 39px;
+  }
+
+  .funnel__part--soft {
+    width: 124px;
+  }
+
+  .funnel__part--medium {
+    width: 93px;
+  }
+
+  .funnel__part--critical {
+    width: 58px;
+    height: 46px;
+  }
+
+  .funnel-stats {
+    width: auto;
+    grid-template-columns: repeat(3, minmax(48px, auto));
+    justify-content: center;
+    gap: 6px 22px;
+    text-align: center;
+  }
+
+  .funnel-stats p {
+    font-size: 10px;
+  }
+
+  .funnel-stats strong {
+    font-size: 15px;
+  }
+
+  .dashboard-card--discounts .discount-row__conversion {
+    grid-template-columns: 92px 32px;
+    justify-content: start;
+    gap: 7px;
+  }
+
+  .dashboard-card--discounts .progress {
+    width: 88px;
+    transform: translateX(29px);
+  }
+
+  .dashboard-card--discounts .discount-row__conversion > span:last-child {
+    transform: translateX(25px);
+  }
+
+  .dashboard-card--discounts .discount-table {
+    margin-inline: -10px;
+  }
+
+  .dashboard-card--discounts .discount-table__head,
+  .dashboard-card--discounts .discount-row {
+    min-width: 440px;
+    grid-template-columns: 64px 150px 82px 84px;
+    gap: 7px;
+    padding: 0 4px 0 12px;
+  }
+
+  .dashboard-card--discounts .discount-table__head {
+    min-height: 36px;
+    font-size: 9.5px;
+    line-height: 1.18;
+  }
+
+  .dashboard-card--discounts .discount-table__head span,
+  .dashboard-card--discounts .discount-row > span {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .dashboard-card--discounts .discount-table__head span:first-child,
+  .dashboard-card--discounts .discount-row > strong:first-child {
+    text-align: center;
+  }
+
+  .dashboard-card--discounts .discount-table__head span:nth-child(4),
+  .dashboard-card--discounts .discount-row > span:nth-child(4) {
+    text-align: center;
+  }
+
+  .dashboard-card--risk .risk-table__head,
+  .dashboard-card--risk .risk-row {
+    min-width: 456px;
+    grid-template-columns: 110px 68px 96px 104px 18px;
+    gap: 9px;
+  }
+
+  .dashboard-card--risk .risk-table__head span {
+    text-align: center;
+  }
+
+  .dashboard-card--risk .risk-table__head span:first-child,
+  .dashboard-card--risk .risk-row .table__primary {
+    text-align: left;
+  }
+
+  .dashboard-card--risk .risk-table__head span:nth-child(4) {
+    white-space: normal;
+  }
+
+  .dashboard-card--risk .risk-table__head span:nth-child(3) {
+    white-space: normal;
+  }
+
+  .dashboard-card--risk .risk-row > span:nth-child(4) {
+    text-align: center;
+  }
+
+  .dashboard-card--risk .risk-row__delay {
+    grid-template-columns: 28px 54px;
+    gap: 5px;
+  }
+
+  .dashboard-card--risk .risk-row__delay .progress {
+    width: 52px;
+  }
+
+  .risk-summary-action-row {
+    width: 100%;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px 8px;
+    justify-items: start;
+  }
+
+  .risk-summary-section--actions {
+    display: block;
+  }
+
+  .risk-summary-action-row span {
+    max-width: none;
+    font-size: 8.5px;
+  }
+
+  .risk-summary-action-row button {
+    grid-column: 1 / -1;
+    width: 104px;
+  }
+
+  body[data-page="risk"] .risk-clients-summary-card {
+    gap: 14px;
+    padding: 16px 18px;
+  }
+
+  body[data-page="risk"] .risk-summary-section {
+    min-height: 0;
+  }
+
+  body[data-page="risk"] .risk-summary-values {
+    gap: 0;
+  }
+
+  body[data-page="risk"] .risk-summary-values em {
+    margin-inline: 14px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--actions {
+    display: block;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row {
+    max-width: 230px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row button {
+    width: 132px;
+    height: 34px;
+    margin-top: 2px;
+  }
+
+  body[data-page="risk"] .risk-clients-side-card {
+    padding: 18px 18px 16px;
+  }
+
+  body[data-page="risk"] .risk-clients-side-card--info {
+    height: auto;
+    min-height: 0;
+  }
+
+  body[data-page="risk"] .risk-info-card__header {
+    margin-bottom: 18px;
+  }
+
+  body[data-page="risk"] .risk-info-card__lead {
+    margin-bottom: 13px;
+  }
+
+  body[data-page="risk"] .risk-info-card__list {
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  body[data-page="risk"] .risk-info-card__legend {
+    gap: 14px;
+  }
+
+  body[data-page="risk"] .risk-clients-side-card--time,
+  body[data-page="risk"] .risk-clients-side-card--loss {
+    height: auto;
+    min-height: 0;
+  }
+
+  body[data-page="risk"] .risk-time-chart {
+    --risk-time-plot-width: clamp(210px, calc(100vw - 116px), 272px);
+    height: 166px;
+    margin-top: 12px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__plot {
+    left: 30px;
+    top: 13px;
+    width: var(--risk-time-plot-width);
+    height: 112px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--100 {
+    top: 12px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--75 {
+    top: 40px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--50 {
+    top: 68px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--25 {
+    top: 96px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--0 {
+    top: 123px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__badge {
+    top: 61px;
+    right: 0;
+  }
+
+  body[data-page="risk"] .risk-time-chart__date--1 {
+    left: 31px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__date--11 {
+    left: 31%;
+  }
+
+  body[data-page="risk"] .risk-time-chart__date--21 {
+    left: 56%;
+  }
+
+  body[data-page="risk"] .risk-loss-card__total {
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    margin-bottom: 14px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart {
+    --risk-loss-plot-width: clamp(224px, calc(100vw - 94px), 312px);
+    height: 118px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__plot {
+    left: 30px;
+    top: 5px;
+    width: var(--risk-loss-plot-width);
+    height: 84px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__label--20 {
+    top: 4px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__label--10 {
+    top: 47px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__label--0 {
+    top: 88px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__date--1 {
+    left: 31px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__date--11 {
+    left: 33%;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__date--21 {
+    left: 60%;
+  }
+
+  .recommendations-table {
+    min-width: 760px;
+  }
+
+  .table.recommendations-table th,
+  .table.recommendations-table td,
+  .coupons-table th,
+  .coupons-table td {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .coupons-summary-card {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+    overflow: visible;
+  }
+
+  .coupons-summary-divider {
+    display: none;
+  }
+
+  .coupons-summary-item {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  .coupons-summary-item p,
+  .coupons-summary-item span:not(.coupons-summary-icon) {
+    white-space: normal;
+  }
+
+  .coupons-summary-export {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .coupons-detail-card {
+    height: auto;
+    overflow: visible;
+  }
+
+  .tooltip__content {
+    max-width: min(196px, calc(100vw - 36px));
+  }
+
+  .settings-card__body--coupons .settings-field,
+  .settings-discount-type {
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+    gap: 8px;
+  }
+
+  .settings-check,
+  .settings-discount-type label {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .settings-discount-type p,
+  .settings-discount-type label {
+    grid-column: 1;
+  }
+
+  .settings-discount-type label {
+    min-height: 0;
+  }
+
+  .settings-discount-type label span,
+  .settings-discount-type label em {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  body[data-page="coupons"] .coupons-summary-card {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+    overflow: visible;
+  }
+
+  body[data-page="coupons"] .coupons-summary-divider {
+    display: none;
+  }
+
+  body[data-page="coupons"] .coupons-summary-item {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  body[data-page="coupons"] .coupons-summary-item p,
+  body[data-page="coupons"] .coupons-summary-item span:not(.coupons-summary-icon) {
+    white-space: normal;
+  }
+
+  body[data-page="coupons"] .coupons-summary-export {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 600px) {
+  .dashboard-card--donut .donut-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    justify-items: center;
+  }
+
+  .dashboard-card--donut .donut-visual,
+  .dashboard-card--donut .donut-chart {
+    width: 150px;
+    height: 150px;
+    flex-basis: 150px;
+  }
+
+  .dashboard-card--donut .donut-center strong {
+    font-size: 27px;
+  }
+
+  .dashboard-card--donut .donut-center span {
+    font-size: 12px;
+  }
+
+  .dashboard-card--donut .legend-list {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: center;
+    gap: 8px;
+  }
+
+  .dashboard-card--donut .legend-item {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .dashboard-card--donut .legend-item p {
+    font-size: 10px;
+  }
+
+  .dashboard-card--funnel .funnel-layout {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .dashboard-card--funnel .funnel {
+    height: 160px;
+    margin-top: 8px;
+  }
+
+  .dashboard-card--funnel .funnel__part {
+    height: 52px;
+  }
+
+  .dashboard-card--funnel .funnel__part--soft {
+    width: 154px;
+    clip-path: polygon(0 0, 100% 0, 87.7% 100%, 12.3% 100%);
+  }
+
+  .dashboard-card--funnel .funnel__part--medium {
+    width: 116px;
+    clip-path: polygon(0 0, 100% 0, 82.3% 100%, 17.7% 100%);
+  }
+
+  .dashboard-card--funnel .funnel__part--critical {
+    width: 75px;
+    height: 58px;
+    clip-path: polygon(0 0, 100% 0, 73% 100%, 27% 100%);
+  }
+
+  .dashboard-card--funnel .funnel-stats {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .dashboard-card--funnel .funnel-stats p {
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .dashboard-card--discounts .discount-row__conversion {
+    grid-template-columns: 112px 34px;
+    gap: 8px;
+  }
+
+  .dashboard-card--discounts .progress {
+    width: 108px;
+    transform: translateX(19px);
+  }
+
+  .dashboard-card--discounts .discount-row__conversion > span:last-child {
+    transform: translateX(18px);
+  }
+}
+
+@media (min-width: 425px) and (max-width: 425px) {
+  .dashboard-card--funnel .funnel {
+    height: 160px;
+    margin-top: 8px;
+  }
+
+  .dashboard-card--funnel .funnel__part {
+    height: 52px;
+  }
+
+  .dashboard-card--funnel .funnel__part--soft {
+    width: 154px;
+    clip-path: polygon(0 0, 100% 0, 87.7% 100%, 12.3% 100%);
+  }
+
+  .dashboard-card--funnel .funnel__part--medium {
+    width: 116px;
+    clip-path: polygon(0 0, 100% 0, 82.3% 100%, 17.7% 100%);
+  }
+
+  .dashboard-card--funnel .funnel__part--critical {
+    width: 75px;
+    height: 58px;
+    clip-path: polygon(0 0, 100% 0, 73% 100%, 27% 100%);
+  }
+}
+
+@media (min-width: 426px) and (max-width: 600px) {
+  .dashboard-card--donut .donut-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    justify-items: center;
+  }
+
+  .dashboard-card--donut .donut-visual,
+  .dashboard-card--donut .donut-chart {
+    width: 150px;
+    height: 150px;
+    flex-basis: 150px;
+  }
+
+  .dashboard-card--donut .donut-center strong {
+    font-size: 27px;
+  }
+
+  .dashboard-card--donut .donut-center span {
+    font-size: 12px;
+  }
+
+  .dashboard-card--donut .legend-list {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: center;
+    gap: 8px;
+  }
+
+  .dashboard-card--donut .legend-item {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .dashboard-card--funnel .funnel-layout {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .dashboard-card--funnel .funnel {
+    height: 160px;
+    margin-top: 8px;
+  }
+
+  .dashboard-card--funnel .funnel__part {
+    height: 52px;
+  }
+
+  .dashboard-card--funnel .funnel__part--soft {
+    width: 154px;
+  }
+
+  .dashboard-card--funnel .funnel__part--medium {
+    width: 116px;
+  }
+
+  .dashboard-card--funnel .funnel__part--critical {
+    width: 75px;
+    height: 58px;
+  }
+
+  .dashboard-card--funnel .funnel-stats {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .dashboard-card--funnel .funnel-stats p {
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .dashboard-card--discounts .discount-row__conversion {
+    grid-template-columns: 112px 34px;
+    gap: 8px;
+  }
+
+  .dashboard-card--discounts .progress {
+    width: 108px;
+    transform: translateX(19px);
+  }
+
+  .dashboard-card--discounts .discount-row__conversion > span:last-child {
+    transform: translateX(18px);
+  }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+  .dashboard-card--funnel .funnel {
+    height: 160px;
+    margin-top: 8px;
+  }
+
+  .dashboard-card--funnel .funnel__part {
+    height: 52px;
+  }
+
+  .dashboard-card--funnel .funnel__part--soft {
+    width: 154px;
+    clip-path: polygon(0 0, 100% 0, 87.66% 100%, 12.34% 100%);
+  }
+
+  .dashboard-card--funnel .funnel__part--medium {
+    width: 116px;
+    clip-path: polygon(0 0, 100% 0, 83.62% 100%, 16.38% 100%);
+  }
+
+  .dashboard-card--funnel .funnel__part--critical {
+    width: 78px;
+    height: 58px;
+    clip-path: polygon(0 0, 100% 0, 72.83% 100%, 27.17% 100%);
+  }
+}
+
+@media (width: 768px) {
+  body[data-page="dashboard"] .dashboard-grid--top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--revenue {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--donut,
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--funnel {
+    grid-column: span 1;
+    min-height: 244px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut.card--pad,
+  body[data-page="dashboard"] .dashboard-card--funnel.card--pad {
+    padding: 16px 14px 14px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .donut-layout {
+    height: 184px;
+    gap: 8px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel-layout {
+    height: 184px;
+    grid-template-columns: minmax(148px, 1fr) 72px;
+    gap: 8px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel {
+    margin-top: 0;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel-stats {
+    gap: 16px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-table__head,
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row {
+    grid-template-columns: 150px 174px 150px 150px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion {
+    grid-template-columns: minmax(110px, 1fr) 34px;
+    justify-content: stretch;
+    gap: 8px;
+    transform: none;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .progress {
+    width: 100%;
+    transform: none;
+    justify-self: center;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion > span:last-child {
+    transform: none;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 600px) {
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion {
+    position: relative;
+    display: block;
+    min-height: 17px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion .progress {
+    width: 108px;
+    margin-inline: auto;
+    transform: none;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion > span:last-child {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 62px);
+    width: 34px;
+    transform: translateY(-50%);
+  }
+
+}
+
+@media (min-width: 425px) and (max-width: 425.98px) {
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-table__head,
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row {
+    min-width: 408px;
+    grid-template-columns: 68px 128px 82px 84px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion {
+    position: relative;
+    display: block;
+    min-height: 17px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion .progress {
+    width: 116px;
+    margin-inline: auto;
+    transform: none;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion > span:last-child {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 62px);
+    width: 34px;
+    transform: translateY(-50%);
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-table__head span:nth-child(3),
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row > span:nth-child(3) {
+    transform: translateX(8px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-table__head,
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row {
+    min-width: 408px;
+    grid-template-columns:
+      minmax(82px, 0.95fr)
+      minmax(124px, 1.15fr)
+      minmax(82px, 0.95fr)
+      minmax(82px, 0.95fr);
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion {
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(82px, 1fr) 34px;
+    min-height: auto;
+    justify-content: stretch;
+    gap: 8px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion .progress {
+    width: 100%;
+    margin-inline: 0;
+    transform: none;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row__conversion > span:last-child {
+    position: static;
+    width: auto;
+    transform: none;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-table__head span:nth-child(3),
+  body[data-page="dashboard"] .dashboard-card--discounts .discount-row > span:nth-child(3) {
+    transform: none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 767.98px) {
+  body[data-page="dashboard"] .dashboard-grid--top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--revenue {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--donut,
+  body[data-page="dashboard"] .dashboard-grid--top .dashboard-card--funnel {
+    grid-column: span 1;
+    min-height: 244px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut.card--pad,
+  body[data-page="dashboard"] .dashboard-card--funnel.card--pad {
+    padding: 16px 14px 14px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .donut-layout {
+    height: 184px;
+    gap: 26px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .donut-visual,
+  body[data-page="dashboard"] .dashboard-card--donut .donut-chart {
+    width: 124px;
+    height: 124px;
+    flex-basis: 124px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .donut-center strong {
+    font-size: 23px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .donut-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform: translate(4px, 2px);
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .donut-center span {
+    display: block;
+    font-size: 11px;
+    margin-top: 3px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .legend-list {
+    gap: 12px;
+    margin-left: 0;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--donut .legend-item p {
+    font-size: 11px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel-layout {
+    height: 184px;
+    grid-template-columns: minmax(140px, 1fr) 64px;
+    gap: 6px;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel {
+    margin-top: 0;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel-stats {
+    width: auto;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 17px;
+    text-align: left;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel-stats p {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  body[data-page="dashboard"] .dashboard-card--funnel .funnel-stats strong {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767.98px) {
+  body[data-page="dashboard"] .dashboard-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width: 767px) {
+  body[data-page="dashboard"] .dashboard-grid--top {
+    grid-template-columns: repeat(2, 367px);
+  }
+}
+
+@media (max-width: 360px) {
+  .page,
+  .coupons-page,
+  .risk-clients-page,
+  .settings-page {
+    padding: 8px 10px;
+  }
+
+  .card,
+  .settings-card {
+    border-radius: 9px;
+  }
+
+  .page__description,
+  .coupons-header p,
+  .risk-clients-header p {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .kpi-card__label,
+  .coupons-kpi-card__label,
+  .risk-clients-kpi-card__label {
+    font-size: 10px;
+  }
+
+  .kpi-card__value,
+  .coupons-kpi-card__value,
+  .risk-clients-kpi-card__value {
+    font-size: 24px;
+  }
+
+  .kpi-card__delta,
+  .coupons-kpi-card__delta,
+  .risk-clients-kpi-card__delta {
+    font-size: 9px;
+  }
+
+  .coupons-table-card,
+  .risk-clients-table-card {
+    min-height: 360px;
+  }
+
+  body[data-page="risk"] .risk-clients-summary-card {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical,
+  body[data-page="risk"] .risk-summary-section--efficiency {
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  body[data-page="risk"] .risk-summary-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  body[data-page="risk"] .risk-summary-text p {
+    margin-bottom: 5px;
+  }
+
+  body[data-page="risk"] .risk-summary-values em {
+    height: 22px;
+    margin-inline: 9px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row {
+    max-width: 210px;
+    gap: 6px 7px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row button {
+    width: 112px;
+    height: 30px;
+    margin-top: 1px;
+    font-size: 7.6px;
+  }
+
+  body[data-page="risk"] .risk-summary-efficiency-row {
+    gap: 7px;
+  }
+
+  .recommendations-footer {
+    min-height: 90px;
+    grid-template-columns: 1fr auto;
+    gap: 8px 10px;
+    padding: 8px 12px;
+  }
+
+  .recommendations-page-size {
+    grid-column: 1;
+  }
+
+  .recommendations-count {
+    grid-column: 2;
+    justify-self: end;
+    white-space: nowrap;
+  }
+
+  .recommendations-footer .pagination {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .recommendations-footer .pagination__item {
+    min-width: 28px;
+    height: 28px;
+  }
+
+  .recommendations-footer .pagination__item--next {
+    min-width: 38px;
+  }
+
+  .settings-card__header {
+    gap: 9px;
+  }
+
+  .settings-card__header h2 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 425px) {
+  body[data-page="risk"] .risk-clients-summary-card {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  body[data-page="risk"] .risk-summary-section {
+    min-height: 0;
+    align-content: start;
+    padding: 10px;
+    border: 1px solid #edf1f7;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical {
+    grid-column: 1 / -1;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical > .risk-summary-icon,
+  body[data-page="risk"] .risk-summary-section--efficiency > .risk-summary-icon {
+    display: none;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical .risk-summary-text {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical .risk-summary-text > p {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  body[data-page="risk"] .risk-summary-values {
+    display: contents;
+  }
+
+  body[data-page="risk"] .risk-summary-values em {
+    display: none;
+  }
+
+  body[data-page="risk"] .risk-summary-pair,
+  body[data-page="risk"] .risk-summary-stack {
+    min-height: 58px;
+    display: grid;
+    align-content: center;
+    gap: 3px;
+    padding: 9px 10px;
+    border: 1px solid #edf1f7;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  body[data-page="risk"] .risk-summary-pair {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 5px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--actions,
+  body[data-page="risk"] .risk-summary-section--efficiency {
+    grid-column: auto;
+    display: block;
+  }
+
+  body[data-page="risk"] .risk-summary-text p {
+    margin-bottom: 6px;
+    white-space: normal;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row {
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 6px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row span,
+  body[data-page="risk"] .risk-summary-efficiency-row span {
+    font-size: 7.3px;
+    line-height: 1.15;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row button {
+    grid-column: 1 / -1;
+    width: 86px;
+    height: 24px;
+    margin-top: 3px;
+    border-radius: 5px;
+    font-size: 7px;
+  }
+
+  body[data-page="risk"] .risk-summary-efficiency-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 900px) {
+  body[data-page="risk"] .risk-clients-summary-card {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  body[data-page="risk"] .risk-summary-section {
+    min-height: 0;
+    align-content: start;
+    padding: 10px;
+    border: 1px solid #edf1f7;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical {
+    grid-column: 1 / -1;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical > .risk-summary-icon,
+  body[data-page="risk"] .risk-summary-section--efficiency > .risk-summary-icon {
+    display: none;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical .risk-summary-text {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical .risk-summary-text > p {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  body[data-page="risk"] .risk-summary-values {
+    display: contents;
+  }
+
+  body[data-page="risk"] .risk-summary-values em {
+    display: none;
+  }
+
+  body[data-page="risk"] .risk-summary-pair,
+  body[data-page="risk"] .risk-summary-stack {
+    min-height: 58px;
+    display: grid;
+    align-content: center;
+    gap: 3px;
+    padding: 9px 10px;
+    border: 1px solid #edf1f7;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  body[data-page="risk"] .risk-summary-pair {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 5px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--actions,
+  body[data-page="risk"] .risk-summary-section--efficiency {
+    grid-column: auto;
+    display: block;
+  }
+
+  body[data-page="risk"] .risk-summary-text p {
+    margin-bottom: 6px;
+    white-space: normal;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row {
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 6px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row span,
+  body[data-page="risk"] .risk-summary-efficiency-row span {
+    font-size: 7.3px;
+    line-height: 1.15;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row button {
+    grid-column: 1 / -1;
+    width: 86px;
+    height: 24px;
+    margin-top: 3px;
+    border-radius: 5px;
+    font-size: 7px;
+  }
+
+  body[data-page="risk"] .risk-summary-efficiency-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  body[data-page="risk"] .risk-clients-layout__side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  body[data-page="risk"] .risk-clients-side-card--info {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="risk"] .risk-clients-side-card--time,
+  body[data-page="risk"] .risk-clients-side-card--loss {
+    height: 188px;
+    min-height: 188px;
+    padding: 12px 10px 10px;
+  }
+
+  body[data-page="risk"] .risk-mini-card__header {
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  body[data-page="risk"] .risk-mini-card__header h2,
+  body[data-page="risk"] .risk-loss-card__title {
+    font-size: 11px;
+    line-height: 1.15;
+  }
+
+  body[data-page="risk"] .risk-mini-card__header > button,
+  body[data-page="risk"] .risk-time-period-dropdown .dropdown__toggle {
+    min-width: 56px;
+    height: 26px;
+    padding: 0 8px;
+    font-size: 8px;
+  }
+
+  body[data-page="risk"] .risk-time-chart {
+    --risk-time-plot-width: clamp(122px, calc(50vw - 90px), 224px);
+    height: 126px;
+    margin-top: 9px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__plot {
+    left: 24px;
+    top: 12px;
+    width: var(--risk-time-plot-width);
+    height: 92px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label,
+  body[data-page="risk"] .risk-loss-chart__label,
+  body[data-page="risk"] .risk-time-chart__date,
+  body[data-page="risk"] .risk-loss-chart__date {
+    font-size: 6.9px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--100 {
+    top: 11px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--75 {
+    top: 34px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--50 {
+    top: 57px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--25 {
+    top: 80px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__label--0 {
+    top: 103px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__badge {
+    top: 47px;
+    right: 0;
+    min-width: 26px;
+    height: 21px;
+    font-size: 8px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__date--1,
+  body[data-page="risk"] .risk-loss-chart__date--1 {
+    left: 24px;
+  }
+
+  body[data-page="risk"] .risk-time-chart__date--11,
+  body[data-page="risk"] .risk-loss-chart__date--11 {
+    left: 33%;
+  }
+
+  body[data-page="risk"] .risk-time-chart__date--21,
+  body[data-page="risk"] .risk-loss-chart__date--21 {
+    left: 58%;
+  }
+
+  body[data-page="risk"] .risk-loss-card__title {
+    margin-bottom: 12px;
+  }
+
+  body[data-page="risk"] .risk-loss-card__total {
+    gap: 5px;
+    margin-bottom: 12px;
+  }
+
+  body[data-page="risk"] .risk-loss-card__total strong {
+    font-size: 20px;
+  }
+
+  body[data-page="risk"] .risk-loss-card__total span {
+    font-size: 6.8px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart {
+    --risk-loss-plot-width: clamp(132px, calc(50vw - 80px), 244px);
+    height: 93px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__plot {
+    left: 24px;
+    top: 3px;
+    width: var(--risk-loss-plot-width);
+    height: 70px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__label--20 {
+    top: 1px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__label--10 {
+    top: 37px;
+  }
+
+  body[data-page="risk"] .risk-loss-chart__label--0 {
+    top: 72px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  body[data-page="risk"] .risk-summary-action-row {
+    grid-template-columns: auto minmax(0, 1fr) 118px;
+    align-items: center;
+    gap: 6px 10px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row button {
+    grid-column: auto;
+    width: 118px;
+    height: 32px;
+    margin-top: 0;
+    font-size: 8px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1024px) {
+  body[data-page="risk"] .risk-clients-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="risk"] .risk-clients-kpi-card {
+    min-height: 82px;
+    padding: 12px 14px;
+  }
+
+  body[data-page="risk"] .risk-clients-kpi-card__label,
+  body[data-page="risk"] .risk-clients-kpi-card__delta {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  body[data-page="risk"] .risk-clients-summary-card {
+    height: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  body[data-page="risk"] .risk-summary-section {
+    min-height: 0;
+    align-content: start;
+    padding: 10px;
+    border: 1px solid #edf1f7;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical {
+    grid-column: 1 / -1;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical > .risk-summary-icon,
+  body[data-page="risk"] .risk-summary-section--efficiency > .risk-summary-icon {
+    display: none;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical .risk-summary-text {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical .risk-summary-text > p {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  body[data-page="risk"] .risk-summary-values {
+    display: contents;
+  }
+
+  body[data-page="risk"] .risk-summary-values em {
+    display: none;
+  }
+
+  body[data-page="risk"] .risk-summary-pair,
+  body[data-page="risk"] .risk-summary-stack {
+    min-height: 58px;
+    display: grid;
+    align-content: center;
+    gap: 3px;
+    padding: 9px 10px;
+    border: 1px solid #edf1f7;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  body[data-page="risk"] .risk-summary-pair {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 5px;
+  }
+
+  body[data-page="risk"] .risk-summary-section--actions,
+  body[data-page="risk"] .risk-summary-section--efficiency {
+    grid-column: auto;
+    display: block;
+    padding: 10px;
+    border: 1px solid #edf1f7;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  body[data-page="risk"] .risk-summary-text p {
+    margin-bottom: 6px;
+    white-space: normal;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row {
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) 118px;
+    align-items: center;
+    gap: 4px 10px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row span,
+  body[data-page="risk"] .risk-summary-efficiency-row span {
+    font-size: 7.3px;
+    line-height: 1.15;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row button {
+    grid-column: auto;
+    width: 118px;
+    height: 32px;
+    margin-top: 0;
+    border-radius: 5px;
+    font-size: 8px;
+  }
+
+  body[data-page="risk"] .risk-summary-efficiency-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1157px), (min-width: 1159px) {
+  body[data-page="risk"] .risk-main-table__head,
+  body[data-page="risk"] .risk-main-row {
+    min-width: 714px;
+    grid-template-columns:
+      minmax(128px, 1.45fr)
+      minmax(84px, 0.9fr)
+      minmax(72px, 0.72fr)
+      minmax(62px, 0.68fr)
+      minmax(46px, 0.5fr)
+      minmax(66px, 0.72fr)
+      minmax(122px, 1.32fr)
+      minmax(82px, 0.88fr);
+  }
+
+  body[data-page="risk"] .risk-main-table__head > span:last-child {
+    justify-self: center;
+    text-align: center;
+  }
+
+  body[data-page="risk"] .risk-main-actions {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1159px) {
+  body[data-page="risk"] .risk-clients-summary-card {
+    grid-template-columns:
+      minmax(150px, 0.85fr)
+      minmax(150px, 0.85fr)
+      minmax(198px, 1.05fr)
+      minmax(160px, 0.9fr);
+  }
+
+  body[data-page="risk"] .risk-summary-section--critical {
+    grid-column: span 2;
+  }
+
+  body[data-page="risk"] .risk-summary-values {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 14px;
+  }
+
+  body[data-page="risk"] .risk-summary-values em {
+    width: 1px;
+    margin: 0;
+  }
+
+  body[data-page="risk"] .risk-summary-pair,
+  body[data-page="risk"] .risk-summary-stack {
+    justify-content: start;
+  }
+
+  body[data-page="risk"] .risk-summary-section--actions {
+    min-width: 0;
+    padding-inline: 12px 10px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row {
+    width: 100%;
+    grid-template-columns: auto minmax(0, 1fr) 82px;
+    align-items: center;
+    gap: 6px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row button {
+    grid-column: auto;
+    width: 82px;
+    justify-self: end;
+  }
+
+  body[data-page="risk"] .risk-summary-section--efficiency {
+    min-width: 0;
+    padding-left: 14px;
+  }
+}
+
+@media (min-width: 1400px) {
+  body[data-page="risk"] .risk-summary-action-row {
+    grid-template-columns: auto minmax(0, 1fr) 104px;
+    gap: 8px;
+  }
+
+  body[data-page="risk"] .risk-summary-action-row button {
+    width: 104px;
+    height: 28px;
+    font-size: 8.4px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body[data-page="settings"] .settings-header .settings-save {
+    width: min(100%, 230px);
+  }
+
+  body[data-page="settings"] .settings-connection button {
+    width: auto;
+    min-width: 206px;
+    max-width: 100%;
+    justify-self: start;
+  }
+
+  body[data-page="settings"] .settings-field,
+  body[data-page="settings"] .settings-card__body--orders .settings-field,
+  body[data-page="settings"] .settings-card__body--coupons .settings-field,
+  body[data-page="settings"] .settings-card__body--spam .settings-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    gap: 7px 10px;
+  }
+
+  body[data-page="settings"] .settings-field__label {
+    flex: 0 0 100%;
+  }
+
+  body[data-page="settings"] .settings-stepper,
+  body[data-page="settings"] .settings-field input {
+    width: 94px;
+    flex: 0 0 94px;
+  }
+
+  body[data-page="settings"] .settings-card__body--orders .settings-stepper,
+  body[data-page="settings"] .settings-card__body--orders .settings-field input {
+    width: 76px;
+    flex-basis: 76px;
+  }
+
+  body[data-page="settings"] .settings-field em {
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  body[data-page="settings"] .settings-discount-type {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  body[data-page="settings"] .settings-discount-type p,
+  body[data-page="settings"] .settings-discount-type label {
+    grid-column: 1;
+  }
+
+  body[data-page="settings"] .settings-manager-select__button {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 430px) {
+  body[data-page="settings"] .settings-card,
+  body[data-page="settings"] .settings-actions {
+    padding: 12px;
+  }
+
+  body[data-page="settings"] .settings-card__header {
+    margin-bottom: 12px;
+  }
+
+  body[data-page="settings"] .settings-note {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  body[data-page="recommendations"] .recommendations-toolbar,
+  body[data-page="coupons"] .coupons-table-toolbar,
+  body[data-page="risk"] .risk-main-toolbar {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 8px;
+  }
+
+  body[data-page="recommendations"] .recommendations-toolbar {
+    padding: 12px;
+  }
+
+  body[data-page="recommendations"] .table-toolbar__spacer {
+    display: none;
+  }
+
+  body[data-page="recommendations"] .recommendations-toolbar .recommendations-search.search,
+  body[data-page="coupons"] .coupons-search,
+  body[data-page="risk"] .risk-main-search {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  body[data-page="recommendations"] .recommendations-toolbar .recommendations-search.search {
+    order: -1;
+    flex: 1 1 auto;
+  }
+
+  body[data-page="recommendations"] .recommendations-toolbar .recommendations-filter.button,
+  body[data-page="recommendations"] .recommendations-toolbar .dropdown__toggle.button,
+  body[data-page="recommendations"] .recommendations-toolbar .recommendations-manager-filter .dropdown__toggle.button,
+  body[data-page="coupons"] .coupons-filter-control,
+  body[data-page="coupons"] .coupons-filter-button,
+  body[data-page="risk"] .risk-main-control,
+  body[data-page="risk"] .risk-main-filter {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  body[data-page="coupons"] .coupons-period-filter,
+  body[data-page="risk"] .risk-main-filter {
+    grid-column: auto;
+  }
+
+  body[data-page="coupons"] .coupons-filter-button,
+  body[data-page="risk"] .risk-main-filter {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="risk"] .risk-main-filter {
+    position: static;
+    gap: 7px;
+  }
+
+  body[data-page="risk"] .risk-main-filter span {
+    position: static;
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+    transform: none;
+  }
+
+  body[data-page="recommendations"] .recommendations-toolbar .recommendations-filter.button,
+  body[data-page="recommendations"] .recommendations-toolbar .dropdown__toggle.button {
+    flex-basis: auto;
+    overflow: hidden;
+  }
+
+  body[data-page="recommendations"] .recommendations-filter span,
+  body[data-page="recommendations"] .recommendations-toolbar .dropdown__label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body[data-page="recommendations"] .recommendations-filter svg {
+    flex: 0 0 auto;
+  }
+
+  body[data-page="recommendations"] .recommendations-filter-panel {
+    top: 144px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+
+  body[data-page="coupons"] .coupons-filter-panel,
+  body[data-page="risk"] .risk-main-filter-panel {
+    top: 184px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1140px) {
+  body[data-page="coupons"] .coupons-table-toolbar,
+  body[data-page="risk"] .risk-main-toolbar {
+    min-height: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 8px;
+  }
+
+  body[data-page="coupons"] .coupons-search,
+  body[data-page="risk"] .risk-main-search {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page="coupons"] .coupons-period-filter,
+  body[data-page="coupons"] .coupons-filter-button,
+  body[data-page="risk"] .risk-main-filter {
+    grid-column: auto;
+  }
+
+  body[data-page="coupons"] .coupons-filter-control,
+  body[data-page="coupons"] .coupons-filter-button,
+  body[data-page="risk"] .risk-main-control,
+  body[data-page="risk"] .risk-main-filter {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  body[data-page="coupons"] .coupons-filter-panel,
+  body[data-page="risk"] .risk-main-filter-panel {
+    top: 144px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+}

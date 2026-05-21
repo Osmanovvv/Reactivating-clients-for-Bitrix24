@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Настройки системы | Реактивация клиентов для Bitrix24</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css?v=20260522-service">
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="vendor/apexcharts.min.js?v=20260519-1"></script>
+  <script defer src="js/data.js?v=20260521-actions"></script>
+  <script defer src="js/data-service.js?v=20260522-service"></script>
+  <script defer src="js/core.js?v=20260522-service"></script>
+  <script defer src="js/settings.js?v=20260522-service"></script>
+  <script defer src="js/app.js?v=20260521-actions"></script>
+</head>
+<body data-page="settings">
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="index.html" aria-label="На дашборд">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <strong>Реактивация клиентов</strong>
+          <span>для Bitrix24</span>
+        </span>
+      </a>
+
+      <nav class="sidebar__nav" aria-label="Основная навигация">
+        <a class="sidebar__link" href="index.html" data-page="dashboard"><span class="nav-icon nav-icon--dashboard" aria-hidden="true"></span>Дашборд</a>
+        <a class="sidebar__link" href="recommendations.html" data-page="recommendations"><span class="nav-icon nav-icon--recommendations" aria-hidden="true"></span>Рекомендации</a>
+        <a class="sidebar__link" href="coupons.html" data-page="coupons"><span class="nav-icon nav-icon--coupons" aria-hidden="true"></span>Купоны</a>
+        <a class="sidebar__link" href="risk-clients.html" data-page="risk"><span class="nav-icon nav-icon--risk" aria-hidden="true"></span>Клиенты в зоне риска</a>
+        <a class="sidebar__link" href="settings.html" data-page="settings"><span class="nav-icon nav-icon--settings" aria-hidden="true"></span>Настройки</a>
+      </nav>
+
+      <div class="sidebar__help">
+        <span class="sidebar__help-icon">?</span>
+        <span>
+          <strong>Нужна помощь?</strong>
+          <a href="#">Открыть инструкцию</a>
+        </span>
+      </div>
+    </aside>
+
+    <div class="app__content">
+      <header class="topbar settings-topbar">
+        <button class="topbar__burger" type="button" aria-label="Открыть меню"></button>
+        <div class="topbar__spacer"></div>
+        <button class="settings-help-button" type="button"><span>?</span>Справка</button>
+        <button class="icon-button icon-button--menu" type="button" aria-label="Дополнительные действия"></button>
+      </header>
+
+      <main class="page settings-page">
+        <section class="settings-shell" aria-label="Настройки системы">
+          <div class="settings-header">
+            <h1 id="settings-title">Настройки системы</h1>
+            <button class="settings-save js-settings-save" type="button">Сохранить настройки</button>
+          </div>
+
+          <article class="card settings-connection" aria-label="Подключение к Bitrix24">
+            <span class="settings-connection__icon" aria-hidden="true"></span>
+            <p>Подключение к Bitrix24:</p>
+            <strong>Активно</strong>
+            <span>(crm.domain.bitrix24.ru)</span>
+            <button class="js-settings-check-connection" type="button">Проверить подключение</button>
+          </article>
+
+          <section class="settings-stack" aria-label="Блоки настроек">
+            <article class="card settings-card settings-card--orders">
+              <header class="settings-card__header">
+                <span class="settings-card__icon settings-card__icon--orders" aria-hidden="true"></span>
+                <h2>1. Анализ заказов</h2>
+              </header>
+              <div class="settings-card__body settings-card__body--orders">
+                <label class="settings-field">
+                  <span class="settings-field__label">Минимум заказов для анализа <i>?</i></span>
+                  <span class="settings-stepper">
+                    <input type="number" value="3" min="0" step="1" aria-label="Минимум заказов для анализа" data-setting="minOrders">
+                    <button class="settings-stepper__button settings-stepper__button--up" type="button" aria-label="Увеличить минимум заказов"></button>
+                    <button class="settings-stepper__button settings-stepper__button--down" type="button" aria-label="Уменьшить минимум заказов"></button>
+                  </span>
+                </label>
+                <label class="settings-field">
+                  <span class="settings-field__label">Минимальная сумма клиента (€) <i>?</i></span>
+                  <span class="settings-stepper">
+                    <input type="number" value="0" min="0" step="1" aria-label="Минимальная сумма клиента" data-setting="minClientAmount">
+                    <button class="settings-stepper__button settings-stepper__button--up" type="button" aria-label="Увеличить минимальную сумму клиента"></button>
+                    <button class="settings-stepper__button settings-stepper__button--down" type="button" aria-label="Уменьшить минимальную сумму клиента"></button>
+                  </span>
+                  <em>€</em>
+                </label>
+                <p class="settings-note"><span aria-hidden="true"></span>Клиенты ниже заданного порога игнорируются системой.</p>
+              </div>
+            </article>
+
+            <article class="card settings-card settings-card--aggression">
+              <header class="settings-card__header">
+                <span class="settings-card__icon settings-card__icon--aggression" aria-hidden="true"></span>
+                <div>
+                  <h2>2. Агрессивность системы</h2>
+                  <p>Определяет, как часто система будет предлагать скидки клиентам.</p>
+                </div>
+              </header>
+              <div class="settings-radio-grid" role="radiogroup" aria-label="Агрессивность системы">
+                <label class="settings-radio-card">
+                  <input type="radio" name="aggression" value="conservative" data-setting="aggression">
+                  <span></span>
+                  <strong>Консервативный</strong>
+                  <p>Минимум рекомендаций. Только самые «горячие» клиенты.</p>
+                </label>
+                <label class="settings-radio-card is-selected">
+                  <input type="radio" name="aggression" value="normal" data-setting="aggression" checked>
+                  <span></span>
+                  <strong>Обычный (рекомендуется)</strong>
+                  <p>Оптимальный баланс между количеством и результатом.</p>
+                </label>
+                <label class="settings-radio-card">
+                  <input type="radio" name="aggression" value="aggressive" data-setting="aggression">
+                  <span></span>
+                  <strong>Агрессивный</strong>
+                  <p>Максимум рекомендаций. Больше действий — больше возврата.</p>
+                </label>
+              </div>
+            </article>
+
+            <article class="card settings-card settings-card--coupons">
+              <header class="settings-card__header">
+                <span class="settings-card__icon settings-card__icon--coupons" aria-hidden="true"></span>
+                <h2>3. Купоны</h2>
+              </header>
+              <div class="settings-card__body settings-card__body--coupons">
+                <label class="settings-check"><input type="checkbox" checked data-setting="couponsEnabled">Включить купоны</label>
+                <label class="settings-field">
+                  <span class="settings-field__label">Максимальная скидка <i>?</i></span>
+                  <span class="settings-stepper">
+                    <input type="number" value="10" min="0" step="1" aria-label="Максимальная скидка" data-setting="maxDiscount">
+                    <button class="settings-stepper__button settings-stepper__button--up" type="button" aria-label="Увеличить максимальную скидку"></button>
+                    <button class="settings-stepper__button settings-stepper__button--down" type="button" aria-label="Уменьшить максимальную скидку"></button>
+                  </span>
+                  <em>%</em>
+                </label>
+                <div class="settings-discount-type">
+                  <p>Тип скидки <i>?</i></p>
+                  <label><input type="radio" name="discount-type" value="fixed" data-setting="discountType" checked><span>Фиксированная</span><em>Одна скидка для всех в рамках лимита.</em></label>
+                  <label><input type="radio" name="discount-type" value="progressive" data-setting="discountType"><span>Прогрессивная</span><em>Скидка может увеличиваться до максимального лимита.</em></label>
+                </div>
+              </div>
+            </article>
+
+            <article class="card settings-card settings-card--tasks">
+              <header class="settings-card__header">
+                <span class="settings-card__icon settings-card__icon--tasks" aria-hidden="true"></span>
+                <h2>4. Назначение задач в Bitrix24</h2>
+              </header>
+              <div class="settings-card__body settings-card__body--tasks">
+                <div class="settings-task-row"><span>Если есть ответственный менеджер — использовать его</span><strong>Включено</strong></div>
+                <label class="settings-manager-select">
+                  <span>Если нет — назначить fallback-менеджера <i>?</i></span>
+                  <span class="dropdown settings-manager-dropdown">
+                    <button class="dropdown__toggle settings-manager-select__button" type="button" aria-expanded="false">
+                      <em></em>
+                      <span class="dropdown__label js-settings-manager-label">Иван Петров</span>
+                    </button>
+                    <span class="dropdown__menu js-settings-manager-menu"></span>
+                  </span>
+                </label>
+              </div>
+            </article>
+
+            <article class="card settings-card settings-card--spam">
+              <header class="settings-card__header">
+                <span class="settings-card__icon settings-card__icon--spam" aria-hidden="true"></span>
+                <h2>5. Защита от спама</h2>
+              </header>
+              <div class="settings-card__body settings-card__body--spam">
+                <label class="settings-field">
+                  <span class="settings-field__label">Пауза между реактивациями (кулдаун) <i>?</i></span>
+                  <span class="settings-stepper">
+                    <input type="number" value="30" min="0" step="1" aria-label="Пауза между реактивациями" data-setting="cooldownDays">
+                    <button class="settings-stepper__button settings-stepper__button--up" type="button" aria-label="Увеличить паузу между реактивациями"></button>
+                    <button class="settings-stepper__button settings-stepper__button--down" type="button" aria-label="Уменьшить паузу между реактивациями"></button>
+                  </span>
+                  <em>дней</em>
+                </label>
+                <p class="settings-note"><span aria-hidden="true"></span>Один клиент не будет получать рекомендации чаще, чем указано.</p>
+              </div>
+            </article>
+
+            <article class="card settings-card settings-card--exclusions">
+              <header class="settings-card__header">
+                <span class="settings-card__icon settings-card__icon--exclusions" aria-hidden="true"></span>
+                <h2>6. Исключения</h2>
+              </header>
+              <div class="settings-card__body settings-card__body--exclusions">
+                <label class="settings-check"><input type="checkbox" checked data-setting="excludeRecentOrder">Не трогать клиентов с заказом &lt; 7 дней <i>?</i></label>
+                <label class="settings-check"><input type="checkbox" checked data-setting="excludeVip">Не трогать VIP клиентов (по тегу в CRM) <i>?</i></label>
+                <p class="settings-note"><span aria-hidden="true"></span>Исключенные клиенты не будут попадать в рекомендации.</p>
+              </div>
+            </article>
+
+            <footer class="card settings-actions">
+              <button class="settings-save settings-save--footer js-settings-save" type="button">Сохранить настройки</button>
+              <button class="settings-reset js-settings-reset" type="button"><span aria-hidden="true"></span>Сбросить к значениям по умолчанию</button>
+            </footer>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Рекомендации | Реактивация клиентов для Bitrix24</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css?v=20260522-service">
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="vendor/apexcharts.min.js?v=20260519-1"></script>
+  <script defer src="js/data.js?v=20260521-actions"></script>
+  <script defer src="js/data-service.js?v=20260522-service"></script>
+  <script defer src="js/core.js?v=20260522-service"></script>
+  <script defer src="js/recommendations.js?v=20260521-data"></script>
+  <script defer src="js/app.js?v=20260521-actions"></script>
+</head>
+<body data-page="recommendations">
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="index.html" aria-label="На дашборд">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <strong>Реактивация клиентов</strong>
+          <span>для Bitrix24</span>
+        </span>
+      </a>
+
+      <nav class="sidebar__nav" aria-label="Основная навигация">
+        <a class="sidebar__link" href="index.html" data-page="dashboard"><span class="nav-icon nav-icon--dashboard" aria-hidden="true"></span>Дашборд</a>
+        <a class="sidebar__link" href="recommendations.html" data-page="recommendations"><span class="nav-icon nav-icon--recommendations" aria-hidden="true"></span>Рекомендации</a>
+        <a class="sidebar__link" href="coupons.html" data-page="coupons"><span class="nav-icon nav-icon--coupons" aria-hidden="true"></span>Купоны</a>
+        <a class="sidebar__link" href="risk-clients.html" data-page="risk"><span class="nav-icon nav-icon--risk" aria-hidden="true"></span>Клиенты в зоне риска</a>
+        <a class="sidebar__link" href="settings.html" data-page="settings"><span class="nav-icon nav-icon--settings" aria-hidden="true"></span>Настройки</a>
+      </nav>
+
+      <div class="sidebar__help">
+        <span class="sidebar__help-icon">?</span>
+        <span>
+          <strong>Нужна помощь?</strong>
+          <a href="#">Открыть инструкцию</a>
+        </span>
+      </div>
+    </aside>
+
+    <div class="app__content">
+      <header class="topbar">
+        <button class="topbar__burger" type="button" aria-label="Открыть меню"></button>
+        <div class="topbar__spacer"></div>
+        <button class="topbar__date" type="button">01.05.2024 – 31.05.2024</button>
+        <button class="icon-button" type="button" aria-label="Обновить"></button>
+        <span class="topbar__updated js-updated-at">Обновлено: 5 мин. назад</span>
+        <button class="icon-button icon-button--menu" type="button" aria-label="Дополнительные действия"></button>
+      </header>
+
+      <main class="page">
+        <section class="page__header" aria-labelledby="recommendations-title">
+          <div>
+            <h1 id="recommendations-title">Рекомендации</h1>
+            <p class="page__description">Клиенты, которым стоит предложить скидку и напомнить о себе</p>
+          </div>
+        </section>
+
+        <section class="kpi-grid recommendations-kpis" aria-label="Показатели рекомендаций">
+          <article class="kpi-card recommendation-kpi recommendation-kpi--total">
+            <span class="recommendation-kpi__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M7 5h10a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2Z"></path>
+                <path d="m12 8 .9 1.8 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2L9.1 10l2-.3L12 8Z"></path>
+              </svg>
+            </span>
+            <div>
+              <p class="kpi-card__label"></p>
+              <p class="kpi-card__value"></p>
+              <p class="recommendation-kpi__meta"></p>
+            </div>
+          </article>
+          <article class="kpi-card recommendation-kpi recommendation-kpi--ready">
+            <span class="recommendation-kpi__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="7"></circle>
+                <path d="m9 12 2 2 4-5"></path>
+              </svg>
+            </span>
+            <div>
+              <p class="kpi-card__label"></p>
+              <p class="kpi-card__value"></p>
+              <p class="recommendation-kpi__meta"></p>
+            </div>
+          </article>
+          <article class="kpi-card recommendation-kpi recommendation-kpi--cooldown">
+            <span class="recommendation-kpi__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M7 4h10"></path>
+                <path d="M7 20h10"></path>
+                <path d="M8 4v4c0 1.4 1.3 2.7 4 4-2.7 1.3-4 2.6-4 4v4"></path>
+                <path d="M16 4v4c0 1.4-1.3 2.7-4 4 2.7 1.3 4 2.6 4 4v4"></path>
+              </svg>
+            </span>
+            <div>
+              <p class="kpi-card__label"></p>
+              <p class="kpi-card__value"></p>
+              <p class="recommendation-kpi__meta"></p>
+            </div>
+          </article>
+          <article class="kpi-card recommendation-kpi recommendation-kpi--excluded">
+            <span class="recommendation-kpi__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="7"></circle>
+                <path d="m8 16 8-8"></path>
+              </svg>
+            </span>
+            <div>
+              <p class="kpi-card__label"></p>
+              <p class="kpi-card__value"></p>
+              <p class="recommendation-kpi__meta"></p>
+            </div>
+          </article>
+        </section>
+
+        <section class="recommendations-main">
+          <article class="card recommendations-main__card">
+            <div class="recommendations-toolbar">
+              <button class="button recommendations-filter js-recommendations-filter" type="button" aria-expanded="false" aria-controls="recommendations-filter-panel">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M4 5h16l-6 7v5l-4 2v-7L4 5Z"></path>
+                </svg>
+                <span>Фильтр</span>
+              </button>
+              <div id="recommendations-filter-panel" class="recommendations-filter-panel js-recommendations-filter-panel" role="dialog" aria-label="&#1055;&#1072;&#1085;&#1077;&#1083;&#1100; &#1092;&#1080;&#1083;&#1100;&#1090;&#1088;&#1086;&#1074;">
+                <strong>&#1060;&#1080;&#1083;&#1100;&#1090;&#1088;&#1099;</strong>
+                <p class="js-recommendations-filter-summary">&#1060;&#1080;&#1083;&#1100;&#1090;&#1088;&#1099; &#1085;&#1077; &#1074;&#1099;&#1073;&#1088;&#1072;&#1085;&#1099;</p>
+                <span>&#1053;&#1072;&#1081;&#1076;&#1077;&#1085;&#1086;: <b class="js-recommendations-filter-total">57</b></span>
+                <div>
+                  <button class="button button--primary js-recommendations-filter-apply" type="button">&#1055;&#1088;&#1080;&#1084;&#1077;&#1085;&#1080;&#1090;&#1100;</button>
+                  <button class="button button--secondary js-recommendations-filter-reset" type="button">&#1057;&#1073;&#1088;&#1086;&#1089;&#1080;&#1090;&#1100;</button>
+                </div>
+              </div>
+              <div class="dropdown recommendations-stage-filter">
+                <button class="button dropdown__toggle" type="button" aria-expanded="false" aria-haspopup="true">
+                  <span class="dropdown__label">Все этапы</span>
+                </button>
+                <div class="dropdown__menu" role="menu"></div>
+              </div>
+              <div class="dropdown recommendations-manager-filter">
+                <button class="button dropdown__toggle" type="button" aria-expanded="false" aria-haspopup="true">
+                  <span class="dropdown__label">Все менеджеры</span>
+                </button>
+                <div class="dropdown__menu" role="menu"></div>
+              </div>
+              <div class="table-toolbar__spacer"></div>
+              <input class="search recommendations-search js-recommendations-search" type="search" placeholder="Поиск по клиенту...">
+            </div>
+
+            <div class="recommendations-table-wrap">
+              <table class="table recommendations-table">
+                <thead>
+                  <tr>
+                    <th><input class="recommendations-check js-check-all" type="checkbox" aria-label="Выбрать все рекомендации"></th>
+                    <th>Клиент</th>
+                    <th>Этап</th>
+                    <th>Задержка цикла <span class="tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Отклонение от обычной частоты заказов клиента.</span></span></th>
+                    <th>Рекомендуемая скидка <span class="tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Размер скидки, подобранный для реактивации.</span></span></th>
+                    <th>Рекомендуемое действие</th>
+                    <th>Ответственный</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="js-recommendations-rows"></tbody>
+              </table>
+            </div>
+
+            <div class="recommendations-footer">
+              <div class="recommendations-page-size">
+                <span>Показать по:</span>
+                <div class="dropdown dropdown--page-size">
+                  <button class="button dropdown__toggle" type="button" aria-expanded="false" aria-haspopup="true">
+                    <span class="dropdown__label">20</span>
+                  </button>
+                  <div class="dropdown__menu" role="menu">
+                    <button class="dropdown__item" type="button">20</button>
+                    <button class="dropdown__item" type="button">40</button>
+                    <button class="dropdown__item" type="button">60</button>
+                  </div>
+                </div>
+              </div>
+              <span class="recommendations-count">1–20 из 57</span>
+              <nav class="pagination" aria-label="Страницы рекомендаций">
+                <button class="pagination__item is-active" type="button" data-page="1">1</button>
+                <button class="pagination__item" type="button" data-page="2">2</button>
+                <button class="pagination__item" type="button" data-page="3">3</button>
+                <button class="pagination__item pagination__item--next" type="button" data-next="true" aria-label="Следующая страница">→</button>
+              </nav>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
