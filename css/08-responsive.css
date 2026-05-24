@@ -209,7 +209,7 @@
   }
 
   .settings-shell {
-    width: min(760px, calc(100% - 48px));
+    width: calc(100% - 48px);
     margin-inline: auto;
   }
 }
@@ -1201,6 +1201,7 @@
   }
 
   body[data-page="risk"] .risk-time-chart {
+    --risk-time-bg-extend: 0px;
     --risk-time-plot-width: clamp(210px, calc(100vw - 116px), 272px);
     height: 166px;
     margin-top: 12px;
@@ -2280,6 +2281,7 @@
   }
 
   body[data-page="risk"] .risk-time-chart {
+    --risk-time-bg-extend: 0px;
     --risk-time-plot-width: clamp(122px, calc(50vw - 90px), 224px);
     height: 126px;
     margin-top: 9px;

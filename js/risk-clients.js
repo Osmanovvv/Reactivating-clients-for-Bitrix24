@@ -475,7 +475,8 @@
     }
 
     $card.find(".risk-info-card__header h2").text(info.title);
-    $card.find(".risk-info-card__header span").attr("title", info.tooltip || "");
+    $card.find(".risk-info-card__tooltip .tooltip__icon").attr("aria-label", info.tooltip || "Информация");
+    $card.find(".risk-info-card__tooltip .tooltip__content").text(info.tooltip || "");
     $card.find(".risk-info-card__lead").text(info.lead);
     $card.find(".risk-info-card__list").html((info.items || []).map(function (item) {
       return "<li>" + escapeHtml(item) + "</li>";
@@ -564,6 +565,17 @@
     });
   }
 
+  function getRiskTimeGridPadding() {
+    var isNarrowViewport = window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
+
+    return {
+      top: -15,
+      right: isNarrowViewport ? 0 : -8,
+      bottom: -12,
+      left: -10
+    };
+  }
+
   function renderRiskTimeChart() {
     var el = document.querySelector("#risk-time-chart");
     var data = getRiskClientsData();
@@ -611,12 +623,7 @@
       grid: {
         borderColor: "#e2e7f0",
         strokeDashArray: 0,
-        padding: {
-          top: -15,
-          right: -8,
-          bottom: -12,
-          left: -10
-        },
+        padding: getRiskTimeGridPadding(),
         xaxis: { lines: { show: false } },
         yaxis: { lines: { show: true } }
       },
@@ -766,16 +773,24 @@
   }
 
   function updateRiskChartSize(chartInstance, chartElement) {
+    var chartOptions;
+
     if (!chartInstance || !chartElement) {
       return;
     }
 
-    chartInstance.updateOptions({
+    chartOptions = {
       chart: {
         width: Math.round(chartElement.clientWidth || 0),
         height: Math.round(chartElement.clientHeight || 0)
       }
-    }, false, false, false);
+    };
+
+    if (chartElement.id === "risk-time-chart") {
+      chartOptions.grid = { padding: getRiskTimeGridPadding() };
+    }
+
+    chartInstance.updateOptions(chartOptions, false, false, false);
   }
 
   function updateRiskChartsSize() {

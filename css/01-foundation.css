@@ -436,6 +436,21 @@ p {
   background: var(--color-primary-soft);
 }
 
+.topbar-actions {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.topbar-actions__menu {
+  min-width: 182px;
+}
+
+.topbar-actions__item {
+  font-size: 12px;
+  font-weight: 500;
+}
+
 .topbar__burger,
 .icon-button {
   width: 34px;

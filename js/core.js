@@ -472,6 +472,48 @@
     });
   }
 
+  function handleTopbarAction(action) {
+    var page = document.body.getAttribute("data-page");
+
+    if (action === "refresh") {
+      $(".js-updated-at").text(getGlobalMessage("updatedNow", "Обновлено: только что"));
+      showToast(getGlobalMessage("dataUpdated", "Данные обновлены"));
+      return;
+    }
+
+    if (action === "export") {
+      showToast(getGlobalMessage("reportExported", "Экспорт отчёта подготовлен"));
+      return;
+    }
+
+    if (action === "settings") {
+      if (page === "settings") {
+        showToast(getGlobalMessage("settingsAlreadyOpened", "Настройки уже открыты"));
+        return;
+      }
+
+      window.location.href = "settings.html";
+      return;
+    }
+
+    if (action === "check-connection") {
+      $(".js-settings-check-connection").first().trigger("click");
+      return;
+    }
+
+    if (action === "save-settings") {
+      $(".js-settings-save").first().trigger("click");
+      return;
+    }
+
+    if (action === "reset-settings") {
+      $(".js-settings-reset").first().trigger("click");
+      return;
+    }
+
+    showToast(getGlobalMessage("extraActionsOpened", "Дополнительные действия открыты"));
+  }
+
   function bindGlobalShellActions() {
     $(document).on("click", ".topbar__burger", function (event) {
       var isOpen = !$("body").hasClass("is-sidebar-open");
@@ -565,11 +607,24 @@
     });
 
     $(document).on("click", ".topbar .icon-button--menu", function () {
+      if ($(this).is("[data-action-menu]")) {
+        return;
+      }
+
       if ($(this).closest(".settings-topbar").length) {
         return;
       }
 
       showToast(getGlobalMessage("extraActionsOpened", "Дополнительные действия открыты"));
+    });
+
+    $(document).on("click", ".topbar-actions__item", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      closeFloatingMenus();
+      handleTopbarAction($(this).attr("data-topbar-action"));
     });
 
     $(document).on("click", ".tooltip__icon", function (event) {

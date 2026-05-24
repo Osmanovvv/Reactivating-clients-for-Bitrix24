@@ -1,9 +1,9 @@
 /* Main stylesheet entrypoint. Keep imports in this order: it preserves the verified cascade. */
-@import url("./01-foundation.css");
-@import url("./02-risk-clients.css");
-@import url("./03-coupons.css");
-@import url("./04-recommendations.css");
-@import url("./05-shared-components.css");
+@import url("./01-foundation.css?v=20260524-topbar-actions");
+@import url("./02-risk-clients.css?v=20260524-risk-scroll-fix");
+@import url("./03-coupons.css?v=20260523-coupon-tooltip-2");
+@import url("./04-recommendations.css?v=20260522-rec-scroll-2");
+@import url("./05-shared-components.css?v=20260523-tooltip-wrap");
 @import url("./06-dashboard.css");
-@import url("./07-settings.css");
+@import url("./07-settings.css?v=20260524-settings-width");
 @import url("./08-responsive.css");

@@ -270,6 +270,10 @@
     });
 
     $(document).on("click", ".settings-topbar .icon-button--menu", function () {
+      if ($(this).is("[data-action-menu]")) {
+        return;
+      }
+
       showToast(getSettingsMessage("extraActions", "Дополнительные действия настроек"));
     });
   }

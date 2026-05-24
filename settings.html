@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Настройки системы | Реактивация клиентов для Bitrix24</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="css/style.css?v=20260522-service">
+  <link rel="stylesheet" href="css/style.css?v=20260524-settings-width">
   <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script defer src="vendor/apexcharts.min.js?v=20260519-1"></script>
   <script defer src="js/data.js?v=20260521-actions"></script>
   <script defer src="js/data-service.js?v=20260522-service"></script>
-  <script defer src="js/core.js?v=20260522-service"></script>
-  <script defer src="js/settings.js?v=20260522-service"></script>
+  <script defer src="js/core.js?v=20260524-topbar-actions"></script>
+  <script defer src="js/settings.js?v=20260524-topbar-actions"></script>
   <script defer src="js/app.js?v=20260521-actions"></script>
 </head>
 <body data-page="settings">
@@ -46,8 +46,19 @@
       <header class="topbar settings-topbar">
         <button class="topbar__burger" type="button" aria-label="Открыть меню"></button>
         <div class="topbar__spacer"></div>
-        <button class="settings-help-button" type="button"><span>?</span>Справка</button>
-        <button class="icon-button icon-button--menu" type="button" aria-label="Дополнительные действия"></button>
+        <button class="settings-help-button tooltip settings-topbar-help-tooltip" type="button">
+          <span class="tooltip__icon settings-help-button__icon" tabindex="0">?</span>
+          Справка
+          <span class="tooltip__content">Краткая справка по настройкам автоматической реактивации клиентов.</span>
+        </button>
+        <div class="topbar-actions">
+          <button class="icon-button icon-button--menu" type="button" aria-label="Дополнительные действия" aria-expanded="false" aria-controls="topbar-actions-menu" data-action-menu="topbar-actions-menu"></button>
+          <div id="topbar-actions-menu" class="action-menu topbar-actions__menu" role="menu">
+            <button class="action-menu__item topbar-actions__item" type="button" role="menuitem" data-topbar-action="check-connection">Проверить подключение</button>
+            <button class="action-menu__item topbar-actions__item" type="button" role="menuitem" data-topbar-action="save-settings">Сохранить настройки</button>
+            <button class="action-menu__item topbar-actions__item" type="button" role="menuitem" data-topbar-action="reset-settings">Сбросить настройки</button>
+          </div>
+        </div>
       </header>
 
       <main class="page settings-page">
@@ -73,7 +84,7 @@
               </header>
               <div class="settings-card__body settings-card__body--orders">
                 <label class="settings-field">
-                  <span class="settings-field__label">Минимум заказов для анализа <i>?</i></span>
+                  <span class="settings-field__label">Минимум заказов для анализа <span class="tooltip settings-help-tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Минимальное количество заказов, после которого клиент попадает в анализ реактивации.</span></span></span>
                   <span class="settings-stepper">
                     <input type="number" value="3" min="0" step="1" aria-label="Минимум заказов для анализа" data-setting="minOrders">
                     <button class="settings-stepper__button settings-stepper__button--up" type="button" aria-label="Увеличить минимум заказов"></button>
@@ -81,7 +92,7 @@
                   </span>
                 </label>
                 <label class="settings-field">
-                  <span class="settings-field__label">Минимальная сумма клиента (€) <i>?</i></span>
+                  <span class="settings-field__label">Минимальная сумма клиента (€) <span class="tooltip settings-help-tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Клиенты с суммой покупок ниже порога не будут учитываться в рекомендациях.</span></span></span>
                   <span class="settings-stepper">
                     <input type="number" value="0" min="0" step="1" aria-label="Минимальная сумма клиента" data-setting="minClientAmount">
                     <button class="settings-stepper__button settings-stepper__button--up" type="button" aria-label="Увеличить минимальную сумму клиента"></button>
@@ -131,7 +142,7 @@
               <div class="settings-card__body settings-card__body--coupons">
                 <label class="settings-check"><input type="checkbox" checked data-setting="couponsEnabled">Включить купоны</label>
                 <label class="settings-field">
-                  <span class="settings-field__label">Максимальная скидка <i>?</i></span>
+                  <span class="settings-field__label">Максимальная скидка <span class="tooltip settings-help-tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Верхний лимит скидки, которую система может предложить клиенту.</span></span></span>
                   <span class="settings-stepper">
                     <input type="number" value="10" min="0" step="1" aria-label="Максимальная скидка" data-setting="maxDiscount">
                     <button class="settings-stepper__button settings-stepper__button--up" type="button" aria-label="Увеличить максимальную скидку"></button>
@@ -140,7 +151,7 @@
                   <em>%</em>
                 </label>
                 <div class="settings-discount-type">
-                  <p>Тип скидки <i>?</i></p>
+                  <p>Тип скидки <span class="tooltip settings-help-tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Фиксированная скидка одинакова для всех, прогрессивная может увеличиваться в рамках лимита.</span></span></p>
                   <label><input type="radio" name="discount-type" value="fixed" data-setting="discountType" checked><span>Фиксированная</span><em>Одна скидка для всех в рамках лимита.</em></label>
                   <label><input type="radio" name="discount-type" value="progressive" data-setting="discountType"><span>Прогрессивная</span><em>Скидка может увеличиваться до максимального лимита.</em></label>
                 </div>
@@ -155,7 +166,7 @@
               <div class="settings-card__body settings-card__body--tasks">
                 <div class="settings-task-row"><span>Если есть ответственный менеджер — использовать его</span><strong>Включено</strong></div>
                 <label class="settings-manager-select">
-                  <span>Если нет — назначить fallback-менеджера <i>?</i></span>
+                  <span>Если нет — назначить fallback-менеджера <span class="tooltip settings-help-tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Fallback-менеджер получит задачу, если у клиента не указан ответственный.</span></span></span>
                   <span class="dropdown settings-manager-dropdown">
                     <button class="dropdown__toggle settings-manager-select__button" type="button" aria-expanded="false">
                       <em></em>
@@ -174,7 +185,7 @@
               </header>
               <div class="settings-card__body settings-card__body--spam">
                 <label class="settings-field">
-                  <span class="settings-field__label">Пауза между реактивациями (кулдаун) <i>?</i></span>
+                  <span class="settings-field__label">Пауза между реактивациями (кулдаун) <span class="tooltip settings-help-tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Период, в течение которого клиент не будет повторно получать рекомендации.</span></span></span>
                   <span class="settings-stepper">
                     <input type="number" value="30" min="0" step="1" aria-label="Пауза между реактивациями" data-setting="cooldownDays">
                     <button class="settings-stepper__button settings-stepper__button--up" type="button" aria-label="Увеличить паузу между реактивациями"></button>
@@ -192,8 +203,8 @@
                 <h2>6. Исключения</h2>
               </header>
               <div class="settings-card__body settings-card__body--exclusions">
-                <label class="settings-check"><input type="checkbox" checked data-setting="excludeRecentOrder">Не трогать клиентов с заказом &lt; 7 дней <i>?</i></label>
-                <label class="settings-check"><input type="checkbox" checked data-setting="excludeVip">Не трогать VIP клиентов (по тегу в CRM) <i>?</i></label>
+                <label class="settings-check"><input type="checkbox" checked data-setting="excludeRecentOrder">Не трогать клиентов с заказом &lt; 7 дней <span class="tooltip settings-help-tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">Такие клиенты исключаются, чтобы не отправлять реактивацию сразу после покупки.</span></span></label>
+                <label class="settings-check"><input type="checkbox" checked data-setting="excludeVip">Не трогать VIP клиентов (по тегу в CRM) <span class="tooltip settings-help-tooltip"><span class="tooltip__icon" tabindex="0">?</span><span class="tooltip__content">VIP-клиенты исключаются из автоматических рекомендаций, если такой тег есть в CRM.</span></span></label>
                 <p class="settings-note"><span aria-hidden="true"></span>Исключенные клиенты не будут попадать в рекомендации.</p>
               </div>
             </article>

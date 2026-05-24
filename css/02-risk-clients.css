@@ -1,8 +1,8 @@
 /* Risk clients page. Extracted from style.css without changing cascade order. */
 .risk-clients-page {
-  height: calc(100vh - var(--topbar-height));
-  min-height: 0;
-  overflow: hidden;
+  height: auto;
+  min-height: calc(100vh - var(--topbar-height));
+  overflow: visible;
   padding: 14px 12px 12px 16px;
 }
 
@@ -1123,7 +1123,7 @@
   white-space: nowrap;
 }
 
-.risk-info-card__header span {
+.risk-info-card__tooltip .tooltip__icon {
   width: 12px;
   height: 12px;
   display: inline-grid;
@@ -1135,6 +1135,21 @@
   font-size: 8px;
   font-weight: 700;
   line-height: 1;
+}
+
+.risk-info-card__tooltip .tooltip__content {
+  top: calc(100% + 6px);
+  right: 0;
+  bottom: auto;
+  left: auto;
+  width: 190px;
+  transform: translateY(4px);
+}
+
+.risk-clients-page .risk-info-card__tooltip:hover .tooltip__content,
+.risk-clients-page .risk-info-card__tooltip:focus-within .tooltip__content,
+.risk-clients-page .risk-info-card__tooltip.is-open .tooltip__content {
+  transform: translateY(0);
 }
 
 .risk-info-card__lead {
@@ -1254,6 +1269,10 @@
   height: 128px;
 }
 
+.risk-time-chart {
+  --risk-time-bg-extend: 9px;
+}
+
 .risk-time-chart__plot {
   position: absolute;
   left: 24px;
@@ -1261,8 +1280,20 @@
   width: 164px;
   height: 96px;
   overflow: visible;
+}
+
+.risk-time-chart__plot::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(var(--risk-time-bg-extend) * -1) 0 0;
+  z-index: 0;
   background:
     linear-gradient(to bottom, #ffe6e4 0 32%, #fff2d8 32% 67%, #dff5eb 67% 100%);
+}
+
+.risk-time-chart__plot .apexcharts-canvas {
+  position: relative;
+  z-index: 1;
 }
 
 .risk-time-chart__plot .apexcharts-canvas,
@@ -1310,6 +1341,7 @@
 
 .risk-time-chart__badge {
   position: absolute;
+  z-index: 5;
   right: 1px;
   top: 40px;
   min-width: 27px;
@@ -1348,6 +1380,59 @@
 .risk-time-chart__date--31,
 .risk-loss-chart__date--31 {
   right: 0;
+}
+
+@media (max-width: 424.98px) {
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart {
+    --risk-time-plot-width: clamp(218px, calc(100% - 44px), 284px);
+  }
+
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart__plot {
+    width: var(--risk-time-plot-width);
+  }
+
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart__badge {
+    z-index: 5;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 900px) {
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart {
+    --risk-time-plot-width: clamp(156px, calc(100% - 18px), 340px);
+  }
+
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart__plot {
+    left: 14px;
+    width: var(--risk-time-plot-width);
+  }
+
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart__badge {
+    right: 8px;
+    z-index: 5;
+  }
+
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart__date--1 {
+    left: 15px;
+  }
+
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart__date--11 {
+    left: 31%;
+  }
+
+  html body[data-page="risk"] .risk-clients-side-card--time .risk-time-chart__date--21 {
+    left: 56%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767.98px) {
+  html body[data-page="risk"] .risk-clients-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html body[data-page="risk"] .risk-clients-kpi-card {
+    min-height: 86px;
+    padding: 12px 10px 11px 12px;
+  }
 }
 
 .risk-loss-card__title {

@@ -830,7 +830,9 @@
   bottom: calc(100% + 8px);
   left: 50%;
   z-index: var(--z-dropdown);
+  box-sizing: border-box;
   width: 220px;
+  max-width: calc(100vw - 48px);
   padding: 9px 10px;
   color: #ffffff;
   background: #111827;
@@ -838,6 +840,10 @@
   box-shadow: var(--shadow-hover);
   font-size: 12px;
   line-height: 1.4;
+  white-space: normal;
+  text-align: left;
+  overflow-wrap: anywhere;
+  word-break: normal;
   opacity: 0;
   pointer-events: none;
   transform: translateX(-50%) translateY(4px);

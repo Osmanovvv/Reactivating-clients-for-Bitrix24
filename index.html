@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дашборд | Реактивация клиентов для Bitrix24</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="css/style.css?v=20260522-service">
+  <link rel="stylesheet" href="css/style.css?v=20260524-topbar-actions">
   <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script defer src="vendor/apexcharts.min.js?v=20260519-1"></script>
   <script defer src="js/data.js?v=20260521-actions"></script>
   <script defer src="js/data-service.js?v=20260522-service"></script>
-  <script defer src="js/core.js?v=20260522-service"></script>
+  <script defer src="js/core.js?v=20260524-topbar-actions"></script>
   <script defer src="js/dashboard.js?v=20260522-service"></script>
   <script defer src="js/app.js?v=20260521-actions"></script>
 </head>
@@ -49,7 +49,14 @@
         <button class="topbar__date" type="button">01.05.2024 – 31.05.2024</button>
         <button class="icon-button" type="button" aria-label="Обновить"></button>
         <span class="topbar__updated js-updated-at">Обновлено: 5 мин. назад</span>
-        <button class="icon-button icon-button--menu" type="button" aria-label="Дополнительные действия"></button>
+        <div class="topbar-actions">
+          <button class="icon-button icon-button--menu" type="button" aria-label="Дополнительные действия" aria-expanded="false" aria-controls="topbar-actions-menu" data-action-menu="topbar-actions-menu"></button>
+          <div id="topbar-actions-menu" class="action-menu topbar-actions__menu" role="menu">
+            <button class="action-menu__item topbar-actions__item" type="button" role="menuitem" data-topbar-action="refresh">Обновить данные</button>
+            <button class="action-menu__item topbar-actions__item" type="button" role="menuitem" data-topbar-action="export">Экспорт отчёта</button>
+            <button class="action-menu__item topbar-actions__item" type="button" role="menuitem" data-topbar-action="settings">Открыть настройки</button>
+          </div>
+        </div>
       </header>
 
       <main class="page">
